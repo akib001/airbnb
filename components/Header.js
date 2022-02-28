@@ -10,13 +10,15 @@ import {
 import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRangePicker } from 'react-date-range';
+import { useRouter } from 'next/router';
 
-function Header() {
+function Header({placeholder}) {
   const [searchInput, setSearchInput] = useState('');
   // Default is set to todays Date for selection future date range
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [noOfGuests, setNoOfGuests] = useState(1);
+  const router = useRouter();
 
   const selectionRange = {
     startDate: startDate,
@@ -30,7 +32,20 @@ function Header() {
   };
 
   const resetInputHandler = () => {
-      setSearchInput('');
+    setSearchInput('');
+  };
+
+
+  const searchHandler = () => {
+      router.push({
+          pathname: "/search",
+          query: {
+              location: searchInput,
+              startDate: startDate.toISOString(),
+              endDate: endDate.toISOString(),
+              noOfGuests
+          }
+      })
   }
 
   return (
@@ -38,6 +53,7 @@ function Header() {
       {/* Left */}
       <div className="relative flex items-center h-10 cursor-pointer">
         <Image
+          onClick={() => router.push('/')}
           src="https://links.papareact.com/qd3"
           layout="fill"
           alt="logo"
@@ -52,7 +68,7 @@ function Header() {
           onChange={(e) => setSearchInput(e.target.value)}
           className="flex-grow pl-5 bg-transparent outline-none text-sm text-gray-600 placeholder-gray-400"
           type="text"
-          placeholder="Start your search"
+          placeholder={placeholder || "Start your search"}
         />
         <SearchIcon className="hidden md:inline-flex h-8 bg-red-400 text-white rounded-full p-2 cursor-pointer md:mx-2" />
       </div>
@@ -91,10 +107,15 @@ function Header() {
               className="w-12 pl-2 text-lg outline-none text-red-400"
             />
           </div>
-          <div className='flex'>
-              {/* flex-grow is set because I want to take all available space for both button */}
-            <button onClick={resetInputHandler} className='flex-grow text-gray-500'>Cancel</button>
-            <button className='flex-grow text-red-400'>Search</button>
+          <div className="flex">
+            {/* flex-grow is set because I want to take all available space for both button */}
+            <button
+              onClick={resetInputHandler}
+              className="flex-grow text-gray-500"
+            >
+              Cancel
+            </button>
+            <button onClick={searchHandler} className="flex-grow text-red-400">Search</button>
           </div>
         </div>
       )}
