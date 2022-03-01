@@ -4,6 +4,7 @@ import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import InfoCard from '../components/InfoCard';
+import MapArea from '../components/MapArea';
 
 
 function Search({searchResults}) {
@@ -30,6 +31,7 @@ function Search({searchResults}) {
           </h1>
 
           <div className="hidden  lg:inline-flex mb-5 space-x-3  text-gray-800 whitespace-nowrap">
+            {/* button is a custom component of tailwind css */}
             <p className="button">Cancellation Flexibility</p>
             <p className="button">Type of Place</p>
             <p className="button">Price</p>
@@ -50,6 +52,9 @@ function Search({searchResults}) {
               />
             ))}
           </div>
+        </section>
+        <section className='hidden xl:inline-flex xl:min-w-[600px]'>
+          <MapArea/>
         </section>
       </main>
       <Footer/>
