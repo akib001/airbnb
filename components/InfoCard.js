@@ -2,11 +2,22 @@ import React from 'react'
 import Image from 'next/image'
 import { HeartIcon } from '@heroicons/react/outline';
 import { StarIcon } from '@heroicons/react/solid';
+import { useDispatch } from 'react-redux';
+import { searchActions } from '../store/search-slice';
 
-function InfoCard({img, location, title, description, star, price, total}) {
+function InfoCard({img, location, title, description, star, price, total, long, lat}) {
+  const dispatch = useDispatch();
+  const selectionHandler = () => {
+    dispatch(searchActions.setSelectLocation({
+      long: long,
+      lat: lat,
+      title: title
+    }))
+  }
+
   return (
     // first:border-t only sets top border of first item
-    <div className='flex py-7 px-2 pr-4 border-b cursor-pointer hover:opacity-80 hover:shadow-lg transition duration-200 ease-out first:border-t'>
+    <div onClick={selectionHandler} className='flex py-7 px-2 pr-4 border-b cursor-pointer hover:opacity-80 hover:shadow-lg transition duration-200 ease-out first:border-t'>
         <div className='relative h-24 w-40 md:h-52 md:w-80 flex-shrink-0'>
           <Image
           src={img}

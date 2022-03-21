@@ -39,7 +39,7 @@ function Search({searchResults}) {
             <p className="button">More filters</p>
           </div>
           <div className='flex  flex-col'>
-            {searchResults.map(({img, location, title, description, star, price, total}) => (
+            {searchResults.map(({img, location, title, description, star, price, total, long, lat}) => (
               <InfoCard
               key={img}
               img={img}
@@ -49,6 +49,8 @@ function Search({searchResults}) {
               star={star}
               price={price}
               total={total}
+              long={long}
+              lat={lat}
               />
             ))}
           </div>

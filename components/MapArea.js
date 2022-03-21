@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import Map, { Marker, Popup } from 'react-map-gl';
 import getCenter from 'geolib/es/getCenter';
+import { useSelector, useDispatch } from 'react-redux';
+import { searchActions } from '../store/search-slice';
 
 function MapArea({ searchResults }) {
-  const [selectLocation, setSelectLocation] = useState({});
-
+  const dispatch = useDispatch();
+  const stateSelectLocation = useSelector(state => state.search.selectLocation);
   // Transform the search results object into the
   // latititude and longitude object
 
@@ -23,6 +25,7 @@ function MapArea({ searchResults }) {
     zoom: 11,
   });
 
+
   return (
     <Map
       mapStyle={'mapbox://styles/akib007/cl07d3df3000l14mgzmokqmhm'}
@@ -40,7 +43,7 @@ function MapArea({ searchResults }) {
           >
             <p
               onClick={() => {
-                setSelectLocation(result);
+                dispatch(searchActions.setSelectLocation(result))
                 console.log(result);
               }}
               role="img"
@@ -51,8 +54,9 @@ function MapArea({ searchResults }) {
             </p>
           </Marker>
           {/* This is the popup if we click the marker */}
-          {selectLocation.long === result.long ? (
+          {stateSelectLocation.long === result.long ? (
             <Popup
+            // onclose function don't work it's a bug
             // onClose={() => {
             // console.log('closed')
             // console.log(selectLocation)
