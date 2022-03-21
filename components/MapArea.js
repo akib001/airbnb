@@ -5,7 +5,7 @@ import getCenter from 'geolib/es/getCenter';
 function MapArea({ searchResults }) {
   const [selectLocation, setSelectLocation] = useState({});
 
-  // Transform the srach results object into the
+  // Transform the search results object into the
   // latititude and longitude object
 
   const coordinates = searchResults.map((result) => ({
@@ -39,7 +39,10 @@ function MapArea({ searchResults }) {
             offsetTop={-10}
           >
             <p
-              onClick={() => setSelectLocation(result)}
+              onClick={() => {
+                setSelectLocation(result);
+                console.log(result);
+              }}
               role="img"
               aria-label="push-pin"
               className="cursor-pointer text-2xl animate-bounce"
@@ -50,12 +53,17 @@ function MapArea({ searchResults }) {
           {/* This is the popup if we click the marker */}
           {selectLocation.long === result.long ? (
             <Popup
-              onClose={() => setSelectLocation({})}
+            // onClose={() => {
+            // console.log('closed')
+            // console.log(selectLocation)
+            // }}
               closeOnClick={true}
+              closeOnMove
               latitude={result.lat}
               longitude={result.long}
             >
               {result.title}
+              {console.log(result.title)}
             </Popup>
           ) : (
             false
