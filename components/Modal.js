@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Image from 'next/image'
 
 function Modal() {
+  const modalRef = useRef();
+
+  const closeModal = e => {
+    if (modalRef.current === e.target) {
+      console.log('Modal Close')
+    }
+  };
+
   return (
     // Background
-    <section onClick={() => console.log('backdrop clicked')} className='w-full h-screen fixed z-[60] text-gray-800 bg-black bg-opacity-30 flex justify-center items-center'>
+    <section onClick={closeModal} ref={modalRef} className='w-full h-screen fixed z-[60] text-gray-800 bg-black bg-opacity-30 flex justify-center items-center'>
       {/* card */}
         <div className='bg-white shadow-md rounded-xl w-full md:w-5/12'>
           <div className='flex p-2 border-b-2 z-[70]'>
