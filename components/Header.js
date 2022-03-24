@@ -12,12 +12,13 @@ import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRangePicker } from 'react-date-range';
 import { useRouter } from 'next/router';
 
-function Header({placeholder}) {
+function Header({placeholder, onShowMenu}) {
   const [searchInput, setSearchInput] = useState('');
   // Default is set to todays Date for selection future date range
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(new Date());
   const [noOfGuests, setNoOfGuests] = useState(1);
+  const [showMenu, setShowMenu] = useState(false);
   const router = useRouter();
 
   const selectionRange = {
@@ -74,10 +75,10 @@ function Header({placeholder}) {
       </div>
       {/* Right */}
       <div className="flex items-center space-x-4 justify-end text-gray-500">
-        <p className="hidden md:inline cursor-pointer">Become a host</p>
+        <p className="hidden md:inline cursor-pointer hover:bg-gray-100 px-4 py-2 rounded-full hover:shadow-md">Become a host</p>
         <GlobeAltIcon className="h-6 cursor-pointer" />
 
-        <div className="flex items-center space-x-2 border-2 p-2 rounded-full">
+        <div onClick={() => setShowMenu(true)} className="flex items-center space-x-2 border-2 p-2 cursor-pointer rounded-full hover:bg-gray-100 hover:shadow-md">
           <MenuIcon className="h-6" />
           <UserCircleIcon className="h-6" />
         </div>
@@ -119,7 +120,8 @@ function Header({placeholder}) {
           </div>
         </div>
       )}
-    </header>
+    </header> 
+
   );
 }
 
