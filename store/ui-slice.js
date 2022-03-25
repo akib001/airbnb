@@ -9,7 +9,7 @@ const uiSlice = createSlice({
     initialState: initialState,
     reducers: {
         setShowModal(state, action) {
-            state.showModal = !action.payload
+            state.showModal = !state.showModal
         }
     }
 })

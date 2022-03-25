@@ -12,7 +12,7 @@ import React from 'react'
 export default function Home({exploreData, cardsData}) {
 
   return (
-    <div className='relative'>
+    <div className=''>
       <Modal/>
       <Head>
         <title>Airbnb</title>
@@ -56,9 +56,7 @@ export default function Home({exploreData, cardsData}) {
             buttonText="Get Inspired"
             />
         </section>
-      </main>
-     
-
+      </main>     
       <Footer/>
     </div>
   )

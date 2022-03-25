@@ -11,6 +11,8 @@ import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRangePicker } from 'react-date-range';
 import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux';
+import { uiActions } from '../store/ui-slice';
 
 function Header({placeholder, onShowMenu}) {
   const [searchInput, setSearchInput] = useState('');
@@ -20,6 +22,7 @@ function Header({placeholder, onShowMenu}) {
   const [noOfGuests, setNoOfGuests] = useState(1);
   const [showMenu, setShowMenu] = useState(false);
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const selectionRange = {
     startDate: startDate,
@@ -35,6 +38,10 @@ function Header({placeholder, onShowMenu}) {
   const resetInputHandler = () => {
     setSearchInput('');
   };
+
+  const BecomeAHostHandler = () => {
+    dispatch(uiActions.setShowModal());
+  }
 
 
   const searchHandler = () => {
@@ -75,7 +82,7 @@ function Header({placeholder, onShowMenu}) {
       </div>
       {/* Right */}
       <div className="flex items-center space-x-4 justify-end text-gray-500">
-        <p className="hidden md:inline cursor-pointer hover:bg-gray-100 px-4 py-2 rounded-full hover:shadow-md">Become a host</p>
+        <button onClick={BecomeAHostHandler} className="hidden md:inline cursor-pointer hover:bg-gray-100 px-4 py-2 rounded-full hover:shadow-md">Become a host</button>
         <GlobeAltIcon className="h-6 cursor-pointer" />
 
         <div onClick={() => setShowMenu(true)} className="flex items-center space-x-2 border-2 p-2 cursor-pointer rounded-full hover:bg-gray-100 hover:shadow-md">
