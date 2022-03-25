@@ -11,7 +11,7 @@ import 'react-date-range/dist/styles.css'; // main style file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { DateRangePicker } from 'react-date-range';
 import { useRouter } from 'next/router';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { uiActions } from '../store/ui-slice';
 
 function Header({placeholder, onShowMenu}) {
@@ -23,6 +23,7 @@ function Header({placeholder, onShowMenu}) {
   const [showMenu, setShowMenu] = useState(false);
   const router = useRouter();
   const dispatch = useDispatch();
+  const stateLogginIn = useSelector((state) => state.ui.userToken);
 
   const selectionRange = {
     startDate: startDate,
@@ -39,8 +40,13 @@ function Header({placeholder, onShowMenu}) {
     setSearchInput('');
   };
 
+  // if user is already logged in I don't show login popup
   const BecomeAHostHandler = () => {
-    dispatch(uiActions.setShowModal());
+    if(!stateLogginIn) {
+      dispatch(uiActions.setShowModal());
+    } else {
+      router.push('/host/homes')
+    }
   }
 
 
