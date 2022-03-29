@@ -45,7 +45,7 @@ function Header({placeholder, onShowMenu}) {
     if(!stateLogginIn) {
       dispatch(uiActions.setShowModal());
     } else {
-      router.push('/host/homes')
+      router.push('/become-a-host/intro')
     }
   }
 

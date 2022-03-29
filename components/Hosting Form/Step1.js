@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-function homes() {
+function Step1() {
   return (
     <section className="flex min-h-screen relative ">
       {/* video */}
@@ -35,7 +35,7 @@ function homes() {
             Exit
           </button>
         </div>
-        <div className="m-8 md:px-10 flex flex-col h-full md:justify-center space-y-4 md:text-center md:mx-auto md:max-w-2xl">
+        <div className="m-8 md:px-10 flex flex-col h-full md:justify-center space-y-4 md:space-y-8 md:text-center md:mx-auto md:max-w-2xl">
           <h1 className="text-3xl md:text-5xl font-semibold">
             Become a Host in 10 easy steps
           </h1>
@@ -50,7 +50,7 @@ function homes() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
-export default homes;
+export default Step1

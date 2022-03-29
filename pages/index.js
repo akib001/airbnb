@@ -11,9 +11,9 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { uiActions } from '../store/ui-slice';
 
+
 export default function Home({ exploreData, cardsData }) {
   const dispatch = useDispatch();
-
   // Beacuse it's a next app we can't run localstorage on redux app it will show an error so to avoid that error 
   useEffect(() => {
     let initialUserToken = localStorage.getItem('userToken');
