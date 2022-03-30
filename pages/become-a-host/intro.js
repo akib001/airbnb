@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 
 
 function intro() {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const router = useRouter();
 
   const letsGoHandler= () => {

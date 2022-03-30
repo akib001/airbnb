@@ -1,0 +1,24 @@
+import React from 'react';
+import Image from 'next/image';
+
+function Step1Option({id, name, optionImg}) {
+  return (
+    <div className='mx-auto max-w-md md:max-w-lg w-full'>
+              <input type="radio" name="radio" value={name} id={id} className='hidden peer' />
+              <label htmlFor={id} className="border-[1px] border-grey peer-checked:border-black peer-checked:border-2 rounded-xl pl-6 pr-3 py-3 md:py-4 flex justify-between items-center">
+                <div className="text-lg font-semibold">{name}</div>
+                <div className="inline-block w-[48px] h-[48px] md:w-[56px] md:h-[56px] min-h-[1px] rounded-md overflow-hidden">
+                  <Image
+                    objectFit="contain"
+                    src={optionImg}
+                    alt="apartment_image"
+                    height={'56px'}
+                    width={'56px'}
+                  />
+                </div>
+              </label>
+    </div>
+  )
+}
+
+export default Step1Option;

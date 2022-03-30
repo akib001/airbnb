@@ -1,56 +1,67 @@
-import React from 'react'
+import React from 'react';
+import Step1Option from './Step1Option';
 
 function Step1() {
+  
+  const  propertyTypeOptions = [
+      {
+          id: 'apartment',
+          name: 'Apartment',
+          optionImg: 'https://a0.muscache.com/im/pictures/eadbcbdb-d57d-44d9-9a76-665a7a4d1cd7.jpg?im_w=240'  
+      },
+      {
+          id: 'house',
+          name: 'House',
+          optionImg: 'https://a0.muscache.com/im/pictures/d1af74db-58eb-46bf-b3f5-e42b6c9892db.jpg?im_w=240'  
+      },
+      {
+          id: 'secondary-unit',
+          name: 'Secondary Unit',
+          optionImg: 'https://a0.muscache.com/im/pictures/32897901-1870-4895-8e23-f08dc0e61750.jpg?im_w=240'  
+      },
+      {
+          id: 'unique-space',
+          name: 'Unique Space',
+          optionImg: 'https://a0.muscache.com/im/pictures/7ad56bb1-ed9f-4dcb-a14c-2523da331b44.jpg?im_w=240'  
+      },
+      {
+          id: 'bed-and-breakfast',
+          name: 'Bed and Breakfast',
+          optionImg: 'https://a0.muscache.com/im/pictures/d52fb4e7-39a4-46df-9bf9-67e56d35eeca.jpg?im_w=240'  
+      },
+      {
+          id: 'boutique-hotel',
+          name: 'Boutique-hotel',
+          optionImg: 'https://a0.muscache.com/im/pictures/a2c9ad21-b159-4fd2-b417-d810fb23c6a9.jpg?im_w=240'  
+      },
+    ]
+
   return (
     <section className="flex min-h-screen relative ">
-      {/* video */}
-      <div className="h-[52vh] md:h-screen w-full md:w-[50%] overflow-hidden relative">
-        <button className="bg-black bg-opacity-30 hover:bg-opacity-70 z-10 cursor-pointer top-4 left-6 text-white rounded-full px-3 py-1 font-semibold absolute md:hidden">
-          X
-        </button>
-        <video
-          className="object-cover w-full h-full overflow-hidden"
-          controls
-          autoPlay
-          crossOrigin="anonymous"
-          playsInline
-          preload="auto"
-        >
-          <source
-            src="https://a0.muscache.com/v/8b/04/8b0456c7-13f8-54bc-889a-7cf549f144a3/8b0456c713f854bc889a7cf549f144a3_4000k_1.mp4?imformat=h265"
-            type="video/mp4: codecs=hevc"
-          />
-          <source
-            src="https://a0.muscache.com/v/8b/04/8b0456c7-13f8-54bc-889a-7cf549f144a3/8b0456c713f854bc889a7cf549f144a3_4000k_1.mp4"
-            type="video/mp4"
-          />
-        </video>
+      {/* Gradient Background with Question */}
+      <div className="h-[50vh] gradient-background flex flex-col justify-end md:justify-center md:h-screen w-full md:w-[50%] overflow-hidden relative">
+        <h1 className="text-[26px] md:text-5xl font-semibold text-white mb-14 md:mb-0 ml-6 md:ml-14 md:mr-20 shadow-sm">
+          What kind of place will you host?
+        </h1>
       </div>
 
-      {/* Other container and button */}
-      <div className="bg-black text-white h-[50vh] md:h-screen w-full md:w-[50%] rounded-t-2xl md:rounded-none absolute md:relative top-[50%] md:right-0 md:top-0 flex flex-col justify-between">
-        {/* Exit Button */}
-        <div className="hidden md:visible md:flex py-8 mx-12 md:justify-end">
-          <button className="rounded-3xl px-4 py-2 text-white bg-neutral-800 text-xs font-semibold hover:text-black">
-            Exit
-          </button>
-        </div>
-        <div className="m-8 md:px-10 flex flex-col h-full md:justify-center space-y-4 md:space-y-8 md:text-center md:mx-auto md:max-w-2xl">
-          <h1 className="text-3xl md:text-5xl font-semibold">
-            Become a Host in 10 easy steps
-          </h1>
-          <p className="text-lg md:text-xl">
-            Join us. We&apos;ll help you every step of the way.
-          </p>
-        </div>
-        <div className="py-4 px-6 md:px-12 border-t-2 border-[#222222] flex md:justify-end">
-          <button className="bg-gradient-to-r from-rose-600 via-pink-700 to-pink-600 w-full md:w-auto py-3 px-6 rounded-lg font-semibold">
-            Let&apos;s go!
-          </button>
+      {/* Option Container */}
+      <div className="bg-white text-[#222] h-[50vh] md:h-full w-full md:w-[50%] rounded-t-2xl md:rounded-none absolute md:relative top-[48%] md:right-0 md:top-0 flex flex-col justify-between md:my-auto">
+        <div className="flex flex-col h-full py-8 px-8 space-y-4">
+
+          {/* Option Radio Checkboxes */}
+          {propertyTypeOptions.map(option => (
+              <Step1Option
+              key={option.id}
+              id={option.id}
+              name={option.name}
+              optionImg={option.optionImg}
+              />
+          ))}          
         </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default Step1
+export default Step1;
