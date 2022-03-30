@@ -10,7 +10,7 @@ function form() {
       <Step1 />
 
       {/* Progress Bar and Buttons*/}
-      <div className="w-full md:w-[50%] fixed bottom-0 md:right-0">
+      <div className="w-full bg-white md:w-[50%] fixed bottom-0 md:right-0">
         <div className="w-full h-[2px] bg-[#EBEBEB]">
           <div className="w-[10%] h-[2px] bg-black" />
         </div>

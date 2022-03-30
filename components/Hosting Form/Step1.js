@@ -37,7 +37,7 @@ function Step1() {
     ]
 
   return (
-    <section className="flex min-h-screen relative ">
+    <section className="flex flex-col min-h-screen relative">
       {/* Gradient Background with Question */}
       <div className="h-[50vh] gradient-background flex flex-col justify-end md:justify-center md:h-screen w-full md:w-[50%] overflow-hidden relative">
         <h1 className="text-[26px] md:text-5xl font-semibold text-white mb-14 md:mb-0 ml-6 md:ml-14 md:mr-20 shadow-sm">
@@ -65,3 +65,5 @@ function Step1() {
 }
 
 export default Step1;
+
+// flex shrink, 
