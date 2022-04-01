@@ -54,7 +54,7 @@ function form() {
           <button onClick={goPreviousPage} className="font-semibold underline px-3 py-2 rounded-lg hover:bg-neutral-200">
             Back
           </button>
-          <button onClick={goNextPage} className="bg-[#222] hover:bg-black text-white font-semibold px-6 py-3 rounded-lg">
+          <button onClick={goNextPage} className="bg-[#222] bg-gray-200 hover:bg-black text-white font-semibold px-6 py-3 rounded-lg">
             Next
           </button>
         </div>
