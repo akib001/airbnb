@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Step1 from '../../components/Hosting Form/Step1';
 import Step2 from '../../components/Hosting Form/Step2';
+import Step3 from '../../components/Hosting Form/Step3';
 
 function form() {
   const [page, setPage] = useState(1);
@@ -29,7 +30,7 @@ function form() {
           </button>
       </div>
       {/* Question Component */}
-      {page === 1 && <Step2 />}
+      {page === 1 && <Step3 />}
       {/* Progress Bar and Buttons*/}
       <div className="w-full bg-white md:w-[50%] fixed bottom-0 md:right-0">
         <div className="w-full h-[2px] bg-[#EBEBEB]">

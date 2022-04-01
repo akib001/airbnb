@@ -1,7 +1,6 @@
 import React from 'react';
 
 function Step2Option({id, name, description}) {
-  console.log(description)
   return (
     <div className='mx-auto max-w-md md:max-w-lg w-full'>
               <input type="radio" name="radio" value={name} id={id} className='hidden peer' />
