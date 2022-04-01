@@ -15,11 +15,20 @@ function form() {
     setPage((page) => page + 1);
   }
 
+  const goPreviousPage = () => {
+    if (page === 1) {
+      return
+    }
+    setPage((page) => page - 1);
+  }
+
   const updateData = (type, newData) => {
     setData((data) => {
       return { ...data, [type]: newData };
     });
   }
+
+  const progressBar = `${page}0%`;
 
   return (
     <div>
@@ -30,19 +39,22 @@ function form() {
           </button>
       </div>
       {/* Question Component */}
-      {page === 1 && <Step3 />}
+      {page === 1 && <Step1 />}
+      {page === 2 && <Step2 />}
+      {page === 3 && <Step3 />}
       {/* Progress Bar and Buttons*/}
       <div className="w-full bg-white md:w-[50%] fixed bottom-0 md:right-0">
         <div className="w-full h-[2px] bg-[#EBEBEB]">
-          <div className="w-[10%] h-[2px] bg-black"/>
+          {/* width is specified in style props cause tailwind doesn't create dynamic classname from variable */}
+          <div style={{width: `${progressBar}`}} className="h-[2px] bg-black"/>
         </div>
 
         {/* Buttons */}
         <div className="flex justify-between pl-4 pr-6 py-4">
-          <button className="font-semibold underline px-3 py-2 rounded-lg hover:bg-neutral-200">
+          <button onClick={goPreviousPage} className="font-semibold underline px-3 py-2 rounded-lg hover:bg-neutral-200">
             Back
           </button>
-          <button className="bg-[#222] hover:bg-black text-white font-semibold px-6 py-3 rounded-lg">
+          <button onClick={goNextPage} className="bg-[#222] hover:bg-black text-white font-semibold px-6 py-3 rounded-lg">
             Next
           </button>
         </div>
