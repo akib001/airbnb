@@ -43,17 +43,17 @@ function Step2() {
   ];
 
   return (
-    <section className="flex flex-col md:flex-row h-screen gradient-background md:bg-white">
+    <section className="flex flex-col md:flex-row min-h-fit md:h-screen gradient-background md:bg-white">
       {/* Gradient Background with Question */}
-      <div className="h-[32vh] flex flex-col justify-end md:justify-center md:h-screen w-full md:w-[50%] overflow-hidden relative">
-        <h1 className="text-[26px] md:text-5xl font-semibold text-white mb-8 md:mb-0 ml-6 md:ml-14 md:mr-20 shadow-sm">
+      <div className="min-h-[28vh] flex flex-col justify-end md:justify-center md:h-screen w-full md:w-[50%] overflow-hidden relative">
+        <h1 className="text-[26px] md:text-5xl font-semibold text-white mb-8 mt-12 mr-6 md:mb-0 ml-6 md:ml-14 md:mr-20 shadow-sm">
           Which of these best describes your place?
         </h1>
       </div>
 
       {/* Option Container */}
-      <div className="bg-white text-[#222] min-h-[52vh] max-h-[72vh] md:min-h-full w-full md:w-[50%] rounded-t-2xl md:rounded-none flex flex-col justify-center md:my-auto">
-        <div className="flex flex-col h-full pt-8 pb-16 px-8 space-y-3 md:space-y-4">
+      <div className="bg-white text-[#222] min-h-fit pb-36 md:min-h-full w-full md:w-[50%] rounded-t-2xl md:rounded-none flex flex-col justify-center md:my-auto">
+        <div className="flex flex-col h-full pt-8 px-8 space-y-3 md:space-y-4">
           {/* Option Radio Checkboxes */}
           {propertyTypeOptions.map((option) => (
             <Step2Option
