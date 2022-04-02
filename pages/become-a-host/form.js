@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import Step1 from '../../components/Hosting Form/Step1';
 import Step2 from '../../components/Hosting Form/Step2';
 import Step3 from '../../components/Hosting Form/Step3';
 
 function form() {
   const [page, setPage] = useState(1);
-  const [data, setData] = useState({
-    user: {},
-    profile: {},
-    settings: {}
-  });
+  const [showNextBtn, setShowNextBtn] = useState(null);
+  const stateData = useSelector(state => state.form.data);
 
   const goNextPage = () => {
     setPage((page) => page + 1);
@@ -29,6 +27,21 @@ function form() {
   }
 
   const progressBar = `${page}0%`;
+
+  // Next Button Checker
+  useEffect(() => {
+    if(page === 1) {
+      setShowNextBtn(stateData.place);
+    }
+    if(page === 2) {
+      setShowNextBtn(stateData.propertyType);
+    }
+    if(page === 3) {
+      setShowNextBtn(stateData.listingType);
+    }
+  }, [stateData,setShowNextBtn,page])
+  
+
 
   return (
     <div>
@@ -57,7 +70,7 @@ function form() {
           <button onClick={goPreviousPage} className="font-semibold underline px-3 py-2 rounded-lg hover:bg-neutral-200">
             Back
           </button>
-          <button  onClick={goNextPage} className="bg-[#222] disabled:bg-gray-200 hover:bg-black text-white font-semibold px-6 py-3 rounded-lg">
+          <button disabled={!showNextBtn}  onClick={goNextPage} className="bg-[#222] disabled:bg-gray-200 hover:bg-black text-white font-semibold px-6 py-3 rounded-lg">
             Next
           </button>
         </div>
