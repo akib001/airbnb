@@ -12,8 +12,8 @@ const formSlice = createSlice({
     name: 'form',
     initialState: initialState,
     reducers: {
-        setData(state, action) {
-            state.data = {...state.data, [action.type]: action.newData}
+        updateData(state, action) {
+            state.data = { ...state.data, [action.payload.type]: action.payload.newData}
         }
     }
 })

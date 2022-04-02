@@ -42,6 +42,9 @@ function form() {
       {page === 1 && <Step1 />}
       {page === 2 && <Step2 />}
       {page === 3 && <Step3 />}
+
+
+
       {/* Progress Bar and Buttons*/}
       <div className="w-full bg-white md:w-[50%] fixed bottom-0 md:right-0">
         <div className="w-full h-[2px] bg-[#EBEBEB]">
@@ -54,7 +57,7 @@ function form() {
           <button onClick={goPreviousPage} className="font-semibold underline px-3 py-2 rounded-lg hover:bg-neutral-200">
             Back
           </button>
-          <button onClick={goNextPage} className="bg-[#222] bg-gray-200 hover:bg-black text-white font-semibold px-6 py-3 rounded-lg">
+          <button  onClick={goNextPage} className="bg-[#222] disabled:bg-gray-200 hover:bg-black text-white font-semibold px-6 py-3 rounded-lg">
             Next
           </button>
         </div>
