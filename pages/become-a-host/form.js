@@ -52,11 +52,10 @@ function form() {
           </button>
       </div>
       {/* Question Component */}
+      {/* steps are question and options component */}
       {page === 1 && <Step1 />}
       {page === 2 && <Step2 />}
       {page === 3 && <Step3 />}
-
-
 
       {/* Progress Bar and Buttons*/}
       <div className="w-full bg-white md:w-[50%] fixed bottom-0 md:right-0">

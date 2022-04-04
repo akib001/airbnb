@@ -8,7 +8,7 @@ function MapArea({ searchResults }) {
   const dispatch = useDispatch();
   const stateSelectLocation = useSelector(state => state.search.selectLocation);
   // Transform the search results object into the
-  // latititude and longitude object
+  // latititude and longitude object 
 
   const coordinates = searchResults.map((result) => ({
     longitude: result.long,
