@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import Step1 from '../../components/Hosting Form/Step1';
 import Step2 from '../../components/Hosting Form/Step2';
 import Step3 from '../../components/Hosting Form/Step3';
+import Address from '../../components/Hosting Form/Address'
 
 function form() {
   const [page, setPage] = useState(1);
@@ -56,6 +57,7 @@ function form() {
       {page === 1 && <Step1 />}
       {page === 2 && <Step2 />}
       {page === 3 && <Step3 />}
+      {page === 4 && <Address />}
 
       {/* Progress Bar and Buttons*/}
       <div className="w-full bg-white md:w-[50%] fixed bottom-0 md:right-0">

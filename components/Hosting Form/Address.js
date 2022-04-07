@@ -2,20 +2,7 @@ import React from 'react';
 import Step3Option from './Step3Option';
 
 function Step3() {
-  const propertyTypeOptions = [
-    {
-      id: 'an-entire-place',
-      name: 'An entire place',
-    },
-    {
-      id: 'a-private-room',
-      name: 'A private room',
-    },
-    {
-      id: 'a-shared-room',
-      name: 'A shared room',
-    },    
-  ];
+
 
   return (
     <section className="flex flex-col md:flex-row min-h-fit md:h-screen gradient-background md:bg-white">
@@ -44,5 +31,3 @@ function Step3() {
 }
 
 export default Step3;
-
-
