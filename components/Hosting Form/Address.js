@@ -1,8 +1,18 @@
 import React from 'react';
 import Step3Option from './Step3Option';
 
-function Step3() {
+function Address() {
 
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        console.log("Latitude is :", position.coords.latitude);
+        console.log("Longitude is :", position.coords.longitude);
+      });
+    } else {
+      console.log('location not available');
+    }
+  }
 
   return (
     <section className="flex flex-col md:flex-row min-h-fit md:h-screen gradient-background md:bg-white">
@@ -17,17 +27,11 @@ function Step3() {
       <div className="bg-white text-[#222] min-h-fit pb-36 md:min-h-full w-full md:w-[50%] rounded-t-2xl md:rounded-none flex flex-col justify-center md:my-auto">
         <div className="flex flex-col h-full pt-8 px-8 space-y-3 md:space-y-4">
           {/* Option Radio Checkboxes */}
-          {propertyTypeOptions.map((option) => (
-            <Step3Option
-              key={option.id}
-              id={option.id}
-              name={option.name}
-            />
-          ))}
+          <button onClick={getLocation}>Get Location</button>
         </div>
       </div>
     </section>
   );
 }
 
-export default Step3;
+export default Address;
