@@ -1,18 +1,26 @@
-import React from 'react';
-import Step3Option from './Step3Option';
+import React, { useEffect, useState } from 'react';
+import MapLocation from './MapLocation';
+import getCenter from 'geolib/es/getCenter';
 
 function Address() {
+    const [location, setLocation] = useState({latitude: '', longitude: ''})
 
-  function getLocation() {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        console.log("Latitude is :", position.coords.latitude);
-        console.log("Longitude is :", position.coords.longitude);
-      });
-    } else {
-      console.log('location not available');
-    }
-  }
+    useEffect(() => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          setLocation({
+            latitude: position.coords.latitude, 
+            longitude: position.coords.longitude
+          })
+          // console.log("Latitude is :", position.coords.latitude);
+          // console.log("Longitude is :", position.coords.longitude);
+        });
+      } else {
+        console.log('location not available');
+      }        
+    },[setLocation])
+
+    
 
   return (
     <section className="flex flex-col md:flex-row min-h-fit md:h-screen gradient-background md:bg-white">
@@ -24,11 +32,10 @@ function Address() {
       </div>
 
       {/* Option Container */}
+      {location.latitude && <MapLocation location={location} />}
+      
       <div className="bg-white text-[#222] min-h-fit pb-36 md:min-h-full w-full md:w-[50%] rounded-t-2xl md:rounded-none flex flex-col justify-center md:my-auto">
-        <div className="flex flex-col h-full pt-8 px-8 space-y-3 md:space-y-4">
-          {/* Option Radio Checkboxes */}
-          <button onClick={getLocation}>Get Location</button>
-        </div>
+    
       </div>
     </section>
   );
