@@ -12,7 +12,7 @@ function MapLocation({ location }) {
   });
 
 
-  return (
+  return ( 
     <Map
       mapStyle={'mapbox://styles/akib007/cl07d3df3000l14mgzmokqmhm'}
       mapboxAccessToken={process.env.mapbox_key}
@@ -26,6 +26,8 @@ function MapLocation({ location }) {
             latitude={location.latitude}
             offsetLeft={-20}
             offsetTop={-10}
+            draggable={true}
+            onDragEnd={(event) => console.log(event.lngLat)}
           >
             <p
               onClick={() => {
