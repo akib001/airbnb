@@ -39,8 +39,7 @@ function MapLocation({ location }) {
               📌
             </p>
           </Marker>
-          {/* This is the popup if we click the marker */}
-          
+          {/* This is the popup if we click the marker */}          
         </div>
     </Map>
   );
