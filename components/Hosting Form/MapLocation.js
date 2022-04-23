@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import Map, { Marker, Popup } from 'react-map-gl';
+import { useDispatch} from 'react-redux';
+import { formActions } from '../../store/form-slice';
+
 
 function MapLocation({ location }) {
+  const dispatch = useDispatch();
 
   const [viewport, setViewport] = useState({
     width: '100%',
@@ -11,6 +15,17 @@ function MapLocation({ location }) {
     zoom: 11,
   });
 
+  const markerDragHandler = (event) => {
+    dispatch(
+      formActions.updateData({
+        type: 'location',
+        newData: {
+          latitude: event.lngLat.lat,
+          longitude: event.lngLat.lng
+        },
+      })
+    );
+  }
 
   return ( 
     <Map
@@ -27,7 +42,7 @@ function MapLocation({ location }) {
             offsetLeft={-20}
             offsetTop={-10}
             draggable={true}
-            onDragEnd={(event) => console.log(event.lngLat)}
+            onDragEnd={markerDragHandler}
           >
             <p
               onClick={() => {

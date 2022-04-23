@@ -4,7 +4,8 @@ const initialState = {
     data: {
         place: '',
         propertyType: '',
-        listingType: ''
+        listingType: '',
+        location: {latitude:'', longitude:''}
     },
 }
 
