@@ -5,7 +5,8 @@ const initialState = {
         place: '',
         propertyType: '',
         listingType: '',
-        location: {latitude:'', longitude:''}
+        location: {latitude:'', longitude:''},
+        address: {street:'', aptSuite:'', city: '', state: '', zipCode: '', country: ''},
     },
 }
 

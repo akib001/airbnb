@@ -4,6 +4,7 @@ import Step1 from '../../components/Hosting Form/Step1';
 import Step2 from '../../components/Hosting Form/Step2';
 import Step3 from '../../components/Hosting Form/Step3';
 import Address from '../../components/Hosting Form/Address'
+import ManualAddress from '../../components/Hosting Form/ManualAddress';
 
 function form() {
   const [page, setPage] = useState(1);
@@ -40,6 +41,10 @@ function form() {
     if(page === 3) {
       setShowNextBtn(stateData.listingType);
     }
+
+    if(page === 5) {
+      setShowNextBtn(stateData.address.street);
+    }
   }, [stateData,setShowNextBtn,page])
   
 
@@ -58,6 +63,7 @@ function form() {
       {page === 2 && <Step2 />}
       {page === 3 && <Step3 />}
       {page === 4 && <Address />}
+      {page === 5 && <ManualAddress />}
 
       {/* Progress Bar and Buttons*/}
       <div className="w-full bg-white md:w-[50%] fixed bottom-0 md:right-0">
