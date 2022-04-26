@@ -10,3 +10,23 @@ export const amenitiesData = [
     'Exercise equipment'
   ];
   
+export const guestFavoritesData = [
+    'Wifi',
+    'TV',
+    'Kitchen',
+    'Washer',
+    'Free parking on premises',
+    'Paid parking on premises',
+    'Air conditioning',
+    'Dedicated workspace',
+    'Outdoor shower'
+];
+
+export const safetyItemsData = [
+    'Smoke alarm',
+    'First aid kit',
+    'Carbon monoxide',
+    'Lock on bedroom door',
+    'Fire extinguisher'
+];
+  

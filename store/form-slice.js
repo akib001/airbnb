@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { amenitiesData } from '../components/Hosting Form/CheckboxItems';
+import { amenitiesData, safetyItemsData, guestFavoritesData } from '../components/Hosting Form/CheckboxItems';
 
 const initialState = {
   data: {
@@ -21,6 +21,8 @@ const initialState = {
     imageUrls: [],
     title:'',
     amenitiesArray: new Array(amenitiesData.length).fill(''),
+    guestFavoritesArray: new Array(guestFavoritesData.length).fill(''),
+    safetyItemsArray: new Array(safetyItemsData.length).fill(''),
   },
 };
 
@@ -76,8 +78,15 @@ const formSlice = createSlice({
 
     addAmenitiesArray(state, action) {
       state.data.amenitiesArray = action.payload;
-    }
+    },
 
+    addGuestFavoritesArray(state, action) {
+      state.data.guestFavoritesArray = action.payload;
+    },
+
+    addSafetyItemsArray(state, action) {
+      state.data.safetyItemsArray = action.payload;
+    }
   },
 });
 
