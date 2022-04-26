@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-
 const initialState = {
   data: {
     place: '',
@@ -17,7 +16,7 @@ const initialState = {
     guests: 0,
     beds: 0,
     bathrooms: 0,
-    imageUrls: []
+    imageUrls: [],
   },
 };
 

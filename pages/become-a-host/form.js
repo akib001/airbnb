@@ -46,9 +46,11 @@ function form() {
     if(page === 5) {
       setShowNextBtn(stateData.address.street);
     }
-
     if(page === 6) {
       setShowNextBtn(stateData.guests);
+    }
+    if(page === 7) {
+      setShowNextBtn(stateData.imageUrls.length !== 0);
     }
 
   }, [stateData,setShowNextBtn,page])
