@@ -18,6 +18,7 @@ const initialState = {
     bathrooms: 0,
     imageUrls: [],
     title:'',
+    amenitiesArray: [],
   },
 };
 
@@ -69,7 +70,12 @@ const formSlice = createSlice({
 
     addImageUrlFn(state, action) {
       state.data.imageUrls.push(action.payload);
+    },
+
+    addAmenitiesArray(state, action) {
+      state.data.amenitiesArray = action.payload;
     }
+
   },
 });
 

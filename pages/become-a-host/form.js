@@ -7,7 +7,8 @@ import Step6 from '../../components/Hosting Form/Step6';
 import Address from '../../components/Hosting Form/Address'
 import ManualAddress from '../../components/Hosting Form/ManualAddress';
 import PhotoUpload from '../../components/Hosting Form/PhotoUpload';
-import Step8 from '../../components/Hosting Form/step8';
+import Step8 from '../../components/Hosting Form/Step8';
+import Step9 from '../../components/Hosting Form/Step9';
 
 function form() {
   const [page, setPage] = useState(1);
@@ -80,6 +81,7 @@ function form() {
       {page === 6 && <Step6 />}
       {page === 7 && <PhotoUpload />}
       {page === 8 && <Step8 />}
+      {page === 9 && <Step9 />}
       {/* Progress Bar and Buttons*/}
       <div className="w-full bg-white md:w-[50%] fixed bottom-0 md:right-0">
         <div className="w-full h-[2px] bg-[#EBEBEB]">
