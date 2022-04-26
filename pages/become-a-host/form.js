@@ -3,8 +3,10 @@ import { useSelector } from 'react-redux';
 import Step1 from '../../components/Hosting Form/Step1';
 import Step2 from '../../components/Hosting Form/Step2';
 import Step3 from '../../components/Hosting Form/Step3';
+import Step6 from '../../components/Hosting Form/Step6';
 import Address from '../../components/Hosting Form/Address'
 import ManualAddress from '../../components/Hosting Form/ManualAddress';
+import PhotoUpload from '../../components/Hosting Form/PhotoUpload';
 
 function form() {
   const [page, setPage] = useState(1);
@@ -41,10 +43,14 @@ function form() {
     if(page === 3) {
       setShowNextBtn(stateData.listingType);
     }
-
     if(page === 5) {
       setShowNextBtn(stateData.address.street);
     }
+
+    if(page === 6) {
+      setShowNextBtn(stateData.guests);
+    }
+
   }, [stateData,setShowNextBtn,page])
   
 
@@ -64,7 +70,8 @@ function form() {
       {page === 3 && <Step3 />}
       {page === 4 && <Address />}
       {page === 5 && <ManualAddress />}
-
+      {page === 6 && <Step6 />}
+      {page === 7 && <PhotoUpload />}
       {/* Progress Bar and Buttons*/}
       <div className="w-full bg-white md:w-[50%] fixed bottom-0 md:right-0">
         <div className="w-full h-[2px] bg-[#EBEBEB]">

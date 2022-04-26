@@ -41,12 +41,14 @@ function ManualAddress() {
     );
   };
 
+  // NOTE: value prop shouldn't be null
+
   return (
     <section className="flex flex-col md:flex-row min-h-fit md:h-screen gradient-background md:bg-white">
       {/* Gradient Background with Question */}
       <div className="min-h-[50vh] flex flex-col justify-end md:justify-center md:h-screen w-full md:w-[50%] overflow-hidden relative">
         <h1 className="text-[26px] md:text-5xl font-semibold text-white mb-8 mt-12 mr-6 md:mb-0 ml-6 md:ml-14 md:mr-20 shadow-sm">
-          Confirm Your Address
+          Type your Address
         </h1>
       </div>
 
@@ -159,13 +161,16 @@ function ManualAddress() {
             Submit
           </button>
 
+          {stateAddress.street && 
+
           <button
             onClick={resetHandler}
             type="reset"
-            className="text-white ml-6 bg-black-[#111] hover:bg-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-[#444] dark:hover:bg-black-[#111] dark:focus:ring-[#111]"
+            className="text-white ml-6 bg-black-[#111] hover:bg-black focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-[#222] dark:hover:bg-black-[#111] dark:focus:ring-[#111]"
           >
-            Reset
+            Edit
           </button>
+          }
         </form>
       </div>
     </section>
