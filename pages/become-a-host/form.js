@@ -7,6 +7,7 @@ import Step6 from '../../components/Hosting Form/Step6';
 import Address from '../../components/Hosting Form/Address'
 import ManualAddress from '../../components/Hosting Form/ManualAddress';
 import PhotoUpload from '../../components/Hosting Form/PhotoUpload';
+import Step8 from '../../components/Hosting Form/step8';
 
 function form() {
   const [page, setPage] = useState(1);
@@ -53,6 +54,10 @@ function form() {
       setShowNextBtn(stateData.imageUrls.length !== 0);
     }
 
+    if(page === 8) {
+      setShowNextBtn(stateData.title);
+    }
+
   }, [stateData,setShowNextBtn,page])
   
 
@@ -74,6 +79,7 @@ function form() {
       {page === 5 && <ManualAddress />}
       {page === 6 && <Step6 />}
       {page === 7 && <PhotoUpload />}
+      {page === 8 && <Step8 />}
       {/* Progress Bar and Buttons*/}
       <div className="w-full bg-white md:w-[50%] fixed bottom-0 md:right-0">
         <div className="w-full h-[2px] bg-[#EBEBEB]">

@@ -17,6 +17,7 @@ const initialState = {
     beds: 0,
     bathrooms: 0,
     imageUrls: [],
+    title:'',
   },
 };
 
