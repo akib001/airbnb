@@ -17,6 +17,7 @@ const initialState = {
     guests: 0,
     beds: 0,
     bathrooms: 0,
+    imageUrls: []
   },
 };
 
@@ -65,6 +66,10 @@ const formSlice = createSlice({
         }
       }
     },
+
+    addImageUrlFn(state, action) {
+      state.data.imageUrls.push(action.payload);
+    }
   },
 });
 
