@@ -23,6 +23,8 @@ const initialState = {
     amenitiesArray: new Array(amenitiesData.length).fill(''),
     guestFavoritesArray: new Array(guestFavoritesData.length).fill(''),
     safetyItemsArray: new Array(safetyItemsData.length).fill(''),
+    description:'',
+    price: 0
   },
 };
 

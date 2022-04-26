@@ -55,7 +55,7 @@ function Step9() {
 
       {/* Option Container */}
       <div className="bg-white text-[#222] min-h-fit pb-36 md:min-h-full w-full md:w-[50%] rounded-t-2xl md:rounded-none flex flex-col justify-center md:my-auto">
-        <div className="mx-auto  w-full my-12 px-8 md:px-12">
+        <div className="mx-auto  w-full my-12 md:my-24 px-8 md:px-12">
           {/* Aminities */}
           <p className='text-xl font-semibold md:text-2xl'>Do you have any standout amenities?</p>
           <div className="flex flex-wrap my-4 md:my-6">
