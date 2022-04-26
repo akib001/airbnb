@@ -1,4 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { amenitiesData } from '../components/Hosting Form/CheckboxItems';
+
 const initialState = {
   data: {
     place: '',
@@ -18,7 +20,7 @@ const initialState = {
     bathrooms: 0,
     imageUrls: [],
     title:'',
-    amenitiesArray: [],
+    amenitiesArray: new Array(amenitiesData.length).fill(''),
   },
 };
 

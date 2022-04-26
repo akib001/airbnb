@@ -9,21 +9,12 @@ function Step9() {
     (state) => state.form.data.amenitiesArray
   );
 
-  useEffect(() => {
-    dispatch(
-      formActions.addAmenitiesArray(new Array(amenitiesData.length).fill(''))
-    );
-  }, [dispatch]);
-
   const handleAmenitiesOnChange = (e, position) => {
     const aminitiesValue = e.target.value;
-    console.log(stateAmenitiesArray)
     const updatedAmenitiesArray = stateAmenitiesArray.map((item, index) => {
         return (index === position ? ((item === '') ? aminitiesValue : '') : item)
     }
     );
-
-    console.log(updatedAmenitiesArray)
     dispatch(formActions.addAmenitiesArray(updatedAmenitiesArray));
   };
 
