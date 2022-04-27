@@ -19,11 +19,7 @@ function form() {
   const stateData = useSelector(state => state.form.data);
 
   const goNextPage = () => {
-    if (page === 11) {
-      console.log(stateData)
-      return
-    }
-    setPage((page) => page + 1);
+      setPage((page) => page + 1);
   }
 
   const goPreviousPage = () => {
@@ -96,12 +92,13 @@ function form() {
       {page === 9 && <Step9 />}
       {page === 10 && <Step10 />}
       {page === 11 && <Step11 />}
+      {page === 12 && <ReviewListing />}
       {/* {page === 12 && <ReviewListing />} */}
       {/* Progress Bar and Buttons*/}
       <div className="w-full bg-white md:w-[50%] fixed bottom-0 md:right-0">
         <div className="w-full h-[2px] bg-[#EBEBEB]">
           {/* width is specified in style props cause tailwind doesn't create dynamic classname from variable */}
-          <div style={{width: `${progressBar}`}} className="h-[2px] bg-black"/>
+          <div style={{width: `${progressBar > 11 ? '100%' : progressBar}`}} className="h-[2px] bg-black"/>
         </div>
 
         {/* Buttons */}
@@ -110,7 +107,7 @@ function form() {
             Back
           </button>
           <button disabled={!showNextBtn}  onClick={goNextPage} className="bg-[#222] disabled:bg-gray-200 hover:bg-black text-white font-semibold px-6 py-3 rounded-lg">
-            Next
+            {(page === 11) ? "Review your listing" : 'Next'}
           </button>
         </div>
       </div>
