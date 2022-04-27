@@ -11,6 +11,7 @@ import Step8 from '../../components/Hosting Form/Step8';
 import Step9 from '../../components/Hosting Form/Step9';
 import Step10 from '../../components/Hosting Form/Step10';
 import Step11 from '../../components/Hosting Form/Step11';
+import ReviewListing from '../../components/Hosting Form/ReviewListing';
 
 function form() {
   const [page, setPage] = useState(1);
@@ -18,6 +19,10 @@ function form() {
   const stateData = useSelector(state => state.form.data);
 
   const goNextPage = () => {
+    if (page === 11) {
+      console.log(stateData)
+      return
+    }
     setPage((page) => page + 1);
   }
 
@@ -34,7 +39,7 @@ function form() {
     });
   }
 
-  const progressBar = `${page}0%`;
+  const progressBar = `${(page/11)*100}%`;
 
   // Next Button Checker
   useEffect(() => {
@@ -62,7 +67,6 @@ function form() {
     if(page === 10) {
       setShowNextBtn(stateData.description);
     }
-
     if(page === 11) {
       setShowNextBtn(stateData.price > 0);
     }
@@ -92,6 +96,7 @@ function form() {
       {page === 9 && <Step9 />}
       {page === 10 && <Step10 />}
       {page === 11 && <Step11 />}
+      {/* {page === 12 && <ReviewListing />} */}
       {/* Progress Bar and Buttons*/}
       <div className="w-full bg-white md:w-[50%] fixed bottom-0 md:right-0">
         <div className="w-full h-[2px] bg-[#EBEBEB]">
