@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import HostingDetailsMap from '../components/HostingDetailsMap';
+import Header from '../components/Header';
 
 function hostingDetails() {
   const data = {
@@ -43,26 +44,42 @@ function hostingDetails() {
 
   return (
     <div className="">
+      <Header />
       {/* Wrapper */}
-      <div className="max-w-full md:max-w-3xl lg:max-w-5xl mx-auto mt-14">
+      <div className="max-w-full md:max-w-3xl lg:max-w-5xl mx-auto mt-10">
         <img
           className="md:rounded-xl object-cover"
           src={data.imageUrls[0]}
           alt={data.title}
         />
         <div className="p-5">
-          {/* Title */}
-          <div className="mb-2 pb-4 text-3xl md:text-4xl border-b">
-            <p className="font-medium tracking-tight text-gray-900 ">
-              {data.title}
-            </p>
-            <p className="text-sm md:text-[16px] pt-2 underline text-[#717171]">
-              {data.address.street +
-                ', ' +
-                data.address.city +
-                ', ' +
-                data.address.country}
-            </p>
+          {/* Title and Button div */}
+          <div className="mb-2 pb-4 border-b flex justify-between">
+            {/* Title & Address */}
+            <div className="text-3xl md:text-4xl">
+              <p className="font-medium tracking-tight text-gray-900 mb-px md:mb-2">
+                {data.title}
+              </p>
+              <p className="text-sm md:text-[16px] pt-2 underline text-[#717171]">
+                {data.address.street +
+                  ', ' +
+                  data.address.city +
+                  ', ' +
+                  data.address.country}
+              </p>
+            </div>
+
+            {/* Price & Button */}
+            <div>
+              <p className='text-xl md:text-2xl font-semibold md:mb-px'>{data.price}<span className='text-[13px] md:text-[15px] text-gray-900 font-normal'> TK/Night</span></p>
+              <div className="text-white">
+                <button
+                  className="bg-gradient-to-r from-rose-600 via-pink-700 to-pink-600 w-full md:w-auto py-2 md:py-3 px-6 rounded-lg font-semibold"
+                >
+                  Reserve
+                </button>
+              </div>
+            </div>
           </div>
 
           {/* Type & Rooms, Bedroom */}
@@ -116,9 +133,9 @@ function hostingDetails() {
             <p className="text-xl md:text-2xl font-semibold">Location</p>
           </div>
           {/* Add Absoulute, width and height otherwise map won't show up */}
-        <div className="absolute w-full md:w-[70%] lg:w-[80%] xl:w-[50%] 2xl:w-[40%] h-[50%] lg:h-[70%]">
-          <HostingDetailsMap location={data.location} />
-        </div>
+          <div className="absolute w-full md:w-[70%] lg:w-[80%] xl:w-[50%] 2xl:w-[40%] h-[50%] lg:h-[70%]">
+            <HostingDetailsMap location={data.location} />
+          </div>
         </div>
       </div>
     </div>
