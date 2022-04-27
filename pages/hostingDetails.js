@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
+import HostingDetailsMap from '../components/HostingDetailsMap';
 
 function hostingDetails() {
   const data = {
@@ -40,42 +41,85 @@ function hostingDetails() {
     price: 1200,
   };
 
-  console.log(data.address);
-
   return (
     <div className="">
-        {/* Wrapper */}
-      <div className='max-w-full md:max-w-3xl lg:max-w-5xl mx-auto mt-14'>
-        <img className='md:rounded-xl object-cover' src={data.imageUrls[0]} alt={data.title} />
+      {/* Wrapper */}
+      <div className="max-w-full md:max-w-3xl lg:max-w-5xl mx-auto mt-14">
+        <img
+          className="md:rounded-xl object-cover"
+          src={data.imageUrls[0]}
+          alt={data.title}
+        />
         <div className="p-5">
-              <h5 className="mb-2 pb-4 text-2xl border-b font-bold tracking-tight text-gray-900 ">
-                {data.title}
-              </h5>
-              <p className="mb-2 pb-4 pt-2 text-xl border-b font-semibold tracking-tight text-gray-900 ">
-               {`${data.place} in ${data.address.city}`}
-              </p>
-              <p className="mb-2 pb-4 pt-2 text-md border-b tracking-tight text-gray-900 ">
-               {`${data.guests} guests : ${data.beds} beds : ${data.bathrooms} bathrooms`}
-              </p>
-              <p className="mb-2 pb-4 pt-2 text-sm border-b tracking-tight text-gray-900 ">
-               {data.description}
-              </p>
-              <div className='mb-2 pb-4 pt-2 text-sm border-b tracking-tight text-gray-900'>
-                <p className='text-lg font-semibold'>Aminities</p>
-                <p className="text-sm pt-2">
-                  {data.amenitiesArray.map((item) => {
-                    return ` ${item}`
-                  })}
-                </p>
-              </div>
-
-              <div className='mb-2 pb-4 pt-2 text-sm tracking-tight text-gray-900'>
-                <p className='text-lg font-semibold'>Location</p>
-                <p className="text-sm pt-2">
-                  {data.address.street + ', ' + data.address.city + ', ' + data.address.country }
-                </p>
-              </div>
+          {/* Title */}
+          <div className="mb-2 pb-4 text-3xl md:text-4xl border-b">
+            <p className="font-medium tracking-tight text-gray-900 ">
+              {data.title}
+            </p>
+            <p className="text-sm md:text-[16px] pt-2 underline text-[#717171]">
+              {data.address.street +
+                ', ' +
+                data.address.city +
+                ', ' +
+                data.address.country}
+            </p>
           </div>
+
+          {/* Type & Rooms, Bedroom */}
+          <div className="mb-2 pb-4 text-xl md:text-2xl border-b">
+            <p className="font-semibold tracking-tight text-gray-900 ">
+              {`${data.place} in ${data.address.city}`}
+            </p>
+            <p className="text-[16px] md:text-[18px] pt-2">
+              {`${data.guests} guests · ${data.beds} beds · ${data.bathrooms} bathrooms`}
+            </p>
+          </div>
+
+          {/* Description */}
+          <p className="mb-2 pb-4 pt-2 text-[16px] border-b tracking-tight text-gray-900 ">
+            {data.description}
+          </p>
+
+          {/* Aminities */}
+          <div className="mb-2 pb-4 pt-2 text-sm border-b tracking-tight text-gray-900">
+            <p className="text-xl md:text-2xl font-semibold mb-2">Aminities</p>
+
+            {/* Each Part */}
+            {data.amenitiesArray.map((item, index) => {
+              return item === '' ? (
+                item
+              ) : (
+                <div
+                  key={index}
+                  className="text-sm pt-2 flex text-[16px] font-medium"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"
+                    />
+                  </svg>
+                  <p className="ml-2">{item}</p>
+                </div>
+              );
+            })}
+          </div>
+          <div className="mb-2 pb-4 pt-2 text-sm tracking-tight text-gray-900">
+            <p className="text-xl md:text-2xl font-semibold">Location</p>
+          </div>
+          {/* Add Absoulute, width and height otherwise map won't show up */}
+        <div className="absolute w-full md:w-[70%] lg:w-[80%] xl:w-[50%] 2xl:w-[40%] h-[50%] lg:h-[70%]">
+          <HostingDetailsMap location={data.location} />
+        </div>
+        </div>
       </div>
     </div>
   );
