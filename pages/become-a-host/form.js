@@ -12,6 +12,7 @@ import Step9 from '../../components/Hosting Form/Step9';
 import Step10 from '../../components/Hosting Form/Step10';
 import Step11 from '../../components/Hosting Form/Step11';
 import ReviewListing from '../../components/Hosting Form/ReviewListing';
+import SpaceDetails from '../../components/SpaceDetails';
 
 function form() {
   const [page, setPage] = useState(1);
@@ -19,7 +20,7 @@ function form() {
   const stateData = useSelector(state => state.form.data);
 
   const goNextPage = () => {
-      if (page === 12) return
+      if (page === 13) return
       setPage((page) => page + 1);
   }
 
@@ -73,46 +74,46 @@ function form() {
 
 
   return (
-    <div>
-      {/* Header Button */}
-      <div className="hidden fixed right-0 md:visible md:flex py-8 mx-12 md:justify-end">
-          <button className="rounded-3xl px-4 py-2 text-black bg-neutral-200 text-xs font-semibold hover:bg-neutral-400">
-            Exit
-          </button>
+    (page === 12) ? <SpaceDetails/> : <div>
+    {/* Header Button */}
+    <div className="hidden fixed right-0 md:visible md:flex py-8 mx-12 md:justify-end">
+        <button className="rounded-3xl px-4 py-2 text-black bg-neutral-200 text-xs font-semibold hover:bg-neutral-400">
+          Exit
+        </button>
+    </div>
+    {/* Question Component */}
+    {/* steps are question and options component */}
+    {page === 1 && <Step1 />}
+    {page === 2 && <Step2 />}
+    {page === 3 && <Step3 />}
+    {page === 4 && <Address />}
+    {page === 5 && <ManualAddress />}
+    {page === 6 && <Step6 />}
+    {page === 7 && <PhotoUpload />}
+    {page === 8 && <Step8 />}
+    {page === 9 && <Step9 />}
+    {page === 10 && <Step10 />}
+    {page === 11 && <Step11 />}
+    {page === 12 && <ReviewListing />}
+    {/* {page === 12 && <ReviewListing />} */}
+    {/* Progress Bar and Buttons*/}
+    <div className="w-full bg-white md:w-[50%] fixed bottom-0 md:right-0">
+      <div className="w-full h-[2px] bg-[#EBEBEB]">
+        {/* width is specified in style props cause tailwind doesn't create dynamic classname from variable */}
+        <div style={{width: `${progressBar > 11 ? '100%' : progressBar}`}} className="h-[2px] bg-black"/>
       </div>
-      {/* Question Component */}
-      {/* steps are question and options component */}
-      {page === 1 && <Step1 />}
-      {page === 2 && <Step2 />}
-      {page === 3 && <Step3 />}
-      {page === 4 && <Address />}
-      {page === 5 && <ManualAddress />}
-      {page === 6 && <Step6 />}
-      {page === 7 && <PhotoUpload />}
-      {page === 8 && <Step8 />}
-      {page === 9 && <Step9 />}
-      {page === 10 && <Step10 />}
-      {page === 11 && <Step11 />}
-      {page === 12 && <ReviewListing />}
-      {/* {page === 12 && <ReviewListing />} */}
-      {/* Progress Bar and Buttons*/}
-      <div className="w-full bg-white md:w-[50%] fixed bottom-0 md:right-0">
-        <div className="w-full h-[2px] bg-[#EBEBEB]">
-          {/* width is specified in style props cause tailwind doesn't create dynamic classname from variable */}
-          <div style={{width: `${progressBar > 11 ? '100%' : progressBar}`}} className="h-[2px] bg-black"/>
-        </div>
 
-        {/* Buttons */}
-        <div className="flex justify-between pl-4 pr-6 py-4">
-          <button onClick={goPreviousPage} className="font-semibold underline px-3 py-2 rounded-lg hover:bg-neutral-200">
-            Back
-          </button>
-          <button disabled={!showNextBtn}  onClick={goNextPage} className="bg-[#222] disabled:bg-gray-200 hover:bg-black text-white font-semibold px-6 py-3 rounded-lg">
-            {(page === 11) ? "Review your listing" : (page === 12) ? "Publish your listing" : 'Next'}
-          </button>
-        </div>
+      {/* Buttons */}
+      <div className="flex justify-between pl-4 pr-6 py-4">
+        <button onClick={goPreviousPage} className="font-semibold underline px-3 py-2 rounded-lg hover:bg-neutral-200">
+          Back
+        </button>
+        <button disabled={!showNextBtn}  onClick={goNextPage} className="bg-[#222] disabled:bg-gray-200 hover:bg-black text-white font-semibold px-6 py-3 rounded-lg">
+          {(page === 11) ? "Review your listing" : (page === 12) ? "Publish your listing" : 'Next'}
+        </button>
       </div>
     </div>
+  </div>
   );
 }
 
