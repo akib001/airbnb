@@ -27,7 +27,7 @@ function ModalHostingDetails() {
         className="w-full h-screen fixed z-[60] text-gray-800 bg-black bg-opacity-30 flex justify-center items-center"
       >
         {/* card */}
-        <div className="bg-white shadow-md rounded-xl w-full md:max-w-xl">
+        <div className="bg-white shadow-md rounded-xl w-full sm:max-w-md md:max-w-md">
           <div className="flex border-b-[1px] py-3 pl-4 pr-8">
             <button
               // closeModal
@@ -36,10 +36,31 @@ function ModalHostingDetails() {
             >
               X
             </button>
-            <h1 className="font-bold mx-auto">Confirm Booking</h1>
+            <h1 className="font-semibold text-2xl mx-auto">Confirm Booking</h1>
           </div>
+
+          {/* Info Container */}
+
+          <div className="pl-5 pt-5 pr-5">
+              <h5 className="mb-2 pb-4 text-xl border-b font-bold tracking-tight text-gray-900 ">
+              A Sweet Place
+              </h5>
+            
+              <p className="mb-2 pb-4 pt-2 border-b text-lg md:text-xl tracking-tight text-gray-900 ">
+               <span className='font-medium'>Check In:</span> 12/12/22
+              </p>
+
+              <p className="mb-2 pb-4 pt-2 border-b text-lg md:text-xl tracking-tight text-gray-900 ">
+               <span className='font-medium'>Check Out:</span> 14/12/22
+              </p>
+
+              <p className="mb-2 pb-4 pt-2 border-b text-lg md:text-xl tracking-tight text-gray-900 ">
+               <span className='font-medium'>Price:</span> 1200 BDT/Night
+              </p>
+          </div>
+
           <div className="my-5 mx-6">
-            <button className="border w-full border-black rounded-md hover:bg-gray-100">
+            <button className="border text-lg font-semibold w-full border-black rounded-md hover:bg-gray-100">
               Confirm
             </button>
           </div>
