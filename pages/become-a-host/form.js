@@ -19,6 +19,7 @@ function form() {
   const stateData = useSelector(state => state.form.data);
 
   const goNextPage = () => {
+      if (page === 12) return
       setPage((page) => page + 1);
   }
 
@@ -107,7 +108,7 @@ function form() {
             Back
           </button>
           <button disabled={!showNextBtn}  onClick={goNextPage} className="bg-[#222] disabled:bg-gray-200 hover:bg-black text-white font-semibold px-6 py-3 rounded-lg">
-            {(page === 11) ? "Review your listing" : 'Next'}
+            {(page === 11) ? "Review your listing" : (page === 12) ? "Publish your listing" : 'Next'}
           </button>
         </div>
       </div>
