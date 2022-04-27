@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   showModal: false,
+  showModalHostingDetails: false,
   userToken: '',
   userLoggedIn: false,
   userName: '',
@@ -12,8 +13,12 @@ const uiSlice = createSlice({
   name: 'ui',
   initialState: initialState,
   reducers: {
-    setShowModal(state, action) {
+    setShowModal(state) {
       state.showModal = !state.showModal;
+    },
+
+    setshowModalHostingDetails(state) {
+      state.showModalHostingDetails = !state.showModalHostingDetails;
     },
 
     retriveUserData(state, action) {

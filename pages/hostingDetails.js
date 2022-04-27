@@ -2,8 +2,13 @@
 import React from 'react';
 import HostingDetailsMap from '../components/HostingDetailsMap';
 import Header from '../components/Header';
+import { useDispatch } from 'react-redux';
+import { uiActions } from '../store/ui-slice';
+import ModalHostingDetails from '../components/ModalHostingDetails';
 
 function hostingDetails() {
+  const dispatch = useDispatch();
+
   const data = {
     place: 'Secondary Unit',
     propertyType: 'Serviced apartment',
@@ -42,8 +47,14 @@ function hostingDetails() {
     price: 1200,
   };
 
+  const showModalHostingHandler = () => {
+    dispatch(uiActions.setshowModalHostingDetails());
+    console.log('Button Clicked');
+  }
+
   return (
     <div className="">
+          <ModalHostingDetails/>
       <Header />
       {/* Wrapper */}
       <div className="max-w-full md:max-w-3xl lg:max-w-5xl mx-auto mt-10">
@@ -74,6 +85,7 @@ function hostingDetails() {
               <p className='text-xl md:text-2xl font-semibold md:mb-px'>{data.price}<span className='text-[13px] md:text-[15px] text-gray-900 font-normal'> TK/Night</span></p>
               <div className="text-white">
                 <button
+                  onClick={showModalHostingHandler}
                   className="bg-gradient-to-r from-rose-600 via-pink-700 to-pink-600 w-full md:w-auto py-2 md:py-3 px-6 rounded-lg font-semibold"
                 >
                   Reserve
