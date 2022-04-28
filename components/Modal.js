@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import Image from 'next/image';
 import { useSelector, useDispatch } from 'react-redux';
 import { uiActions } from '../store/ui-slice';
@@ -11,6 +11,8 @@ function Modal() {
   const dispatch = useDispatch();
   const router = useRouter();
 
+  const [isLoginMode, setIsLoginMode] = useState(true);
+
   const stateShowModal = useSelector((state) => state.ui.showModal);
 
   const closeModal = (e) => {
@@ -20,6 +22,10 @@ function Modal() {
     }
     console.log(e.target);
   };
+
+  const loginModeSwitchHandler = () => {
+    setIsLoginMode(!isLoginMode);
+  }
 
   const signInWithGoogleHandler = () => {
     signInWithGoogle()
@@ -111,7 +117,7 @@ function Modal() {
               type="submit"
               className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
             >
-              Submit
+              {isLoginMode ? 'Login' : 'Sign Up'}
             </button>
           </form>
 
@@ -120,8 +126,9 @@ function Modal() {
             <button
               className="border w-full py-2 border-black rounded-md hover:bg-gray-100"
               type="button"
+              onClick={loginModeSwitchHandler}
             >
-              Create new Account
+              {isLoginMode ? 'Create new Account' : 'Switch to Login'}
             </button>
           </div>
 
