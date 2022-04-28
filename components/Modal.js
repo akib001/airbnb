@@ -102,7 +102,7 @@ function Modal() {
               </div>
               <label
                 htmlFor="remember"
-                className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-500"
               >
                 Remember me
               </label>
