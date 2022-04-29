@@ -12,14 +12,58 @@ import Step9 from '../../components/Hosting Form/Step9';
 import Step10 from '../../components/Hosting Form/Step10';
 import Step11 from '../../components/Hosting Form/Step11';
 import ReviewListing from '../../components/Hosting Form/ReviewListing';
+import { useRouter } from 'next/router';
+
 
 function form() {
   const [page, setPage] = useState(1);
   const [showNextBtn, setShowNextBtn] = useState(null);
   const stateData = useSelector((state) => state.form.data);
 
+  const router = useRouter();
+
+  const formSubmitHandler = async () => {
+    await fetch(
+      'https://online-lodging-marketplace.herokuapp.com/addPlace',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify({
+          place: stateData.place,
+          propertyType: stateData.propertyType,
+          listingType: stateData.listingType,
+          location: stateData.location,
+          address: stateData.address,
+          guests: stateData.guests,
+          beds: stateData.beds,
+          bathrooms: stateData.bathrooms,
+          imageInfo: stateData.imageInfo,
+          title:stateData.title,
+          amenitiesArray: stateData.title,
+          guestFavoritesArray: stateData.guestFavoritesArray,
+          safetyItemsArray: stateData.safetyItemsArray,
+          description:stateData.description,
+          price: stateData.price
+        }),
+      }
+    );
+
+    console.log('Place Added');
+    
+  };
+
   const goNextPage = () => {
-    if (page === 12) return;
+    // Form Submit to Api
+    if (page === 12) {
+      formSubmitHandler();
+      router.push('/');
+    };
+
+    if (page > 12) return;
+
     setPage((page) => page + 1);
   };
 
@@ -37,6 +81,8 @@ function form() {
   };
 
   const progressBar = `${(page / 11) * 100}%`;
+
+
 
   // Next Button Checker
   useEffect(() => {
