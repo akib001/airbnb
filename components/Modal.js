@@ -37,7 +37,7 @@ function Modal() {
             email: result._tokenResponse.email,
           })
         );
-        router.push('/host/homes');
+        router.push('/become-a-host/intro');
       })
       .catch((error) => {
         console.log(error);
