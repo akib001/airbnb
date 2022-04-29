@@ -51,6 +51,10 @@ function Search({searchResults}) {
               total={item.price}
               longitude={item.location.longitude}
               latitude={item.location.latitude}
+              id={item._id}
+              startDate={formattedStartDate}
+              endDate={formattedEndDate}
+              noOfGuests={noOfGuests}
               />)
             })}
           </div>
@@ -73,7 +77,7 @@ export async function getServerSideProps() {
   const data = await res.json()
   const searchResults = data.data
 
-  // console.log(searchResults)
+  console.log(searchResults)
 
   // Pass searchResults to the page via props
   return { props: { searchResults } }
