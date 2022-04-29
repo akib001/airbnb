@@ -21,7 +21,7 @@ function ReviewListing() {
           <a href="#">
             <img
               className="rounded-t-lg"
-              src={stateData.imageUrls[0]}
+              src={stateData.imageInfo[0].url}
               alt={stateData.title}
             />
           </a>

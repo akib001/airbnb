@@ -5,8 +5,7 @@ import {
   ref,
   uploadBytes,
   getDownloadURL,
-  listAll,
-  list,
+  deleteObject
 } from 'firebase/storage';
 import { storage } from '../../Firebase/firebase';
 import { v4 } from 'uuid';
@@ -16,18 +15,31 @@ import {formActions} from '../../store/form-slice';
 function PhotoUpload() {
   const dispatch = useDispatch();
   const [imageUpload, setImageUpload] = useState(null);
-  const stateImageUrls = useSelector((state) => state.form.data.imageUrls);
+  const stateImageInfo = useSelector((state) => state.form.data.imageInfo);
 
-  const imagesListRef = ref(storage, "images/");
+
   const uploadFile = () => {
     if (imageUpload == null) return;
-    const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
+    const dynamicImageName = `images/${imageUpload.name + v4()}`;
+    const imageRef = ref(storage, dynamicImageName);
     uploadBytes(imageRef, imageUpload).then((snapshot) => {
       getDownloadURL(snapshot.ref).then((url) => {
-        dispatch(formActions.addImageUrlFn(url));
+        dispatch(formActions.addImageInfoFn({url: url, fileName: dynamicImageName}));
       });
     });
   };
+
+  const imageDeleteHandler = ( fileName, index) => {
+      const deleteImageRef = ref(storage, fileName);
+      
+      deleteObject(deleteImageRef).then(() => {
+        console.log('File deleted successfully')
+      }).catch((error) => {
+        console.log(error)
+      });
+
+      dispatch(formActions.removeImageInfoFn(index));
+  }
 
   // TODO: Drag & drop image, Image grid, Delete Functionality add
 
@@ -49,8 +61,13 @@ function PhotoUpload() {
         }}
       />
       <button className='text-white my-8 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800' onClick={uploadFile}>Confirm Upload</button>
-      {stateImageUrls.map((url) => {
-        return <img className='mb-4' key={url} src={url} />;
+      {stateImageInfo.map((item, index) => {
+        return (<div key={item.url} className='relative'>
+          <button onClick={() => imageDeleteHandler(item.fileName, index)} className="bg-black bg-opacity-30 hover:bg-opacity-70 z-10 cursor-pointer top-4 left-6 text-white rounded-full px-3 py-1 font-semibold absolute md:hidden">
+          X
+          </button>
+          <img className='mb-4' src={item.url} />
+          </div>)
       })}
       </div>
     </section>

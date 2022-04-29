@@ -56,7 +56,7 @@ function form() {
       setShowNextBtn(stateData.guests);
     }
     if (page === 7) {
-      setShowNextBtn(stateData.imageUrls.length !== 0);
+      setShowNextBtn(stateData.imageInfo.length !== 0);
     }
     if (page === 8) {
       setShowNextBtn(stateData.title);

@@ -18,7 +18,7 @@ const initialState = {
     guests: 0,
     beds: 0,
     bathrooms: 0,
-    imageUrls: [],
+    imageInfo: [],
     title:'',
     amenitiesArray: new Array(amenitiesData.length).fill(''),
     guestFavoritesArray: new Array(guestFavoritesData.length).fill(''),
@@ -74,8 +74,12 @@ const formSlice = createSlice({
       }
     },
 
-    addImageUrlFn(state, action) {
-      state.data.imageUrls.push(action.payload);
+    addImageInfoFn(state, action) {
+      state.data.imageInfo.push(action.payload);
+    },
+
+    removeImageInfoFn(state, action) {
+      state.data.imageInfo.splice(action.payload, 1);
     },
 
     addAmenitiesArray(state, action) {
