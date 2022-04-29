@@ -11,6 +11,10 @@ function ModalHostingDetails() {
     (state) => state.ui.showModalHostingDetails
   );
 
+  const stateSearchDetails = useSelector(
+    (state) => state.search.searchDetails
+  );
+
   const closeModal = (e) => {
     // To identify click only occurs at backdrop
     if (modalRef.current === e.target) {
@@ -43,19 +47,23 @@ function ModalHostingDetails() {
 
           <div className="pl-5 pt-5 pr-5">
               <h5 className="mb-2 pb-4 text-xl border-b font-bold tracking-tight text-gray-900 ">
-              A Sweet Place
+              {stateSearchDetails.title}
               </h5>
             
               <p className="mb-2 pb-4 pt-2 border-b text-lg md:text-xl tracking-tight text-gray-900 ">
-               <span className='font-medium'>Check In:</span> 12/12/22
+               <span className='font-medium'>Check In:</span> {stateSearchDetails.startDate}
               </p>
 
               <p className="mb-2 pb-4 pt-2 border-b text-lg md:text-xl tracking-tight text-gray-900 ">
-               <span className='font-medium'>Check Out:</span> 14/12/22
+               <span className='font-medium'>Check Out:</span> {stateSearchDetails.endDate}
               </p>
 
               <p className="mb-2 pb-4 pt-2 border-b text-lg md:text-xl tracking-tight text-gray-900 ">
-               <span className='font-medium'>Price:</span> 1200 BDT/Night
+               <span className='font-medium'>No of guests:</span> {stateSearchDetails.noOfGuests}
+              </p>
+
+              <p className="mb-2 pb-4 pt-2 border-b text-lg md:text-xl tracking-tight text-gray-900 ">
+               <span className='font-medium'>Price:</span> {`${stateSearchDetails.price} BDT/Night`}
               </p>
           </div>
 

@@ -2,57 +2,22 @@
 import React from 'react';
 import HostingDetailsMap from './HostingDetailsMap';
 import Header from './Header';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { uiActions } from '../store/ui-slice';
 import ModalHostingDetails from './ModalHostingDetails';
 import Modal from './Modal'
 
 function PlaceDetails({selectedPlace}) {
   const dispatch = useDispatch();
-
-  console.log(selectedPlace);
-//   const selectedPlace = {
-//     place: 'Secondary Unit',
-//     propertyType: 'Serviced apartment',
-//     listingType: 'A private room',
-//     location: { latitude: '23.78433474056456', longitude: '90.36918142592657' },
-//     address: {
-//       street: '159/A, Road: 10, Adabor',
-//       aptSuite: '',
-//       city: 'Dhaka',
-//       state: '',
-//       zipCode: '1207',
-//       country: 'Bangladesh',
-//     },
-//     guests: 3,
-//     beds: 2,
-//     bathrooms: 1,
-//     imageUrls: [
-//       'https://firebasestorage.googleapis.com/v0/b/rent-space-f74e9.appspot.com/o/images%2F2.jpg8db7f3e1-c2f0-46ef-aa55-bdc7f62cec43?alt=media&token=c9df9426-730e-4939-9d04-2cc42063b09e',
-//     ],
-//     title: 'A Sweet Place',
-//     amenitiesArray: ['', 'Hot tub', '', '', 'Fire pit', '', '', '', ''],
-//     guestFavoritesArray: [
-//       '',
-//       '',
-//       '',
-//       '',
-//       'Free parking on premises',
-//       '',
-//       '',
-//       '',
-//       '',
-//     ],
-//     safetyItemsArray: ['', '', 'Carbon monoxide', '', ''],
-//     description:
-//       'Hi I am Kalyan singh  , I belong to Cheog , we are Apple farmers by profession and i also run a School in Cheog where we promote sports . i have represented state in Volleyball Championships , My daughter has represented in various national wreslting championships.',
-//     price: 1200,
-//   };
-
+  
   const showModalHostingHandler = () => {
     dispatch(uiActions.setshowModalHostingDetails());
     console.log('Button Clicked');
   }
+
+  const stateSearchDetails = useSelector(
+    (state) => state.search.searchDetails
+  );
 
   return (
     <div className="">
@@ -87,14 +52,14 @@ function PlaceDetails({selectedPlace}) {
             {/* Price & Button */}
             <div>
               <p className='text-xl md:text-2xl font-semibold md:mb-px'>{selectedPlace.price}<span className='text-[13px] md:text-[15px] text-gray-900 font-normal'> TK/Night</span></p>
-              <div className="text-white">
+              {stateSearchDetails.title && <div className="text-white">
                 <button
                   onClick={showModalHostingHandler}
                   className="bg-gradient-to-r from-rose-600 via-pink-700 to-pink-600 w-full md:w-auto py-2 md:py-3 px-6 rounded-lg font-semibold"
                 >
                   Reserve
                 </button>
-              </div>
+              </div>}
             </div>
           </div>
 

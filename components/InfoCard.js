@@ -35,6 +35,8 @@ function InfoCard({
         startDate,
         endDate,
         noOfGuests,
+        title,
+        price
       })
     );
     router.push('/' + id);
