@@ -5,12 +5,11 @@ import { StarIcon } from '@heroicons/react/solid';
 import { useDispatch } from 'react-redux';
 import { searchActions } from '../store/search-slice';
 
-function InfoCard({img, location, title, description, star, price, total, long, lat}) {
+function InfoCard({img, location, place, title, description, star, price, total, latitude, longitude}) {
   const dispatch = useDispatch();
   const selectionHandler = () => {
     dispatch(searchActions.setSelectLocation({
-      long: long,
-      lat: lat,
+      location: {longitude, latitude},
       title: title
     }))
   }
@@ -30,7 +29,7 @@ function InfoCard({img, location, title, description, star, price, total, long, 
 
         <div className='flex flex-col flex-grow pl-5'>
           <div className='flex justify-between'>
-            <p>{location}</p>
+            <p>{`${place} in ${location.city}`}</p>
             <HeartIcon className='h-7 cursor-pointer' />
           </div>
 
@@ -47,7 +46,8 @@ function InfoCard({img, location, title, description, star, price, total, long, 
 
               <div>
                 <p className='text-lg lg:text-2xl font-semibold pb-2'>{price}</p>
-                <p className='text-right font-extralight'>{total}</p>
+                {/* NOTE: total price should be number of days * price */}
+                <p className='text-right font-extralight'>{total*3}</p>
               </div>
             </div>
         </div>

@@ -10,12 +10,14 @@ function MapArea({ searchResults }) {
   // Transform the search results object into the
   // latititude and longitude object 
 
+  // $numberDouble for api fetch problem
   const coordinates = searchResults.map((result) => ({
-    longitude: result.long,
-    latitude: result.lat,
+    longitude: result.location.longitude.$numberDouble,
+    latitude: result.location.latitude.$numberDouble,
   }));
 
   const center = getCenter(coordinates);
+
 
   const [viewport, setViewport] = useState({
     width: '100%',
@@ -33,18 +35,18 @@ function MapArea({ searchResults }) {
       {...viewport}
       onMove={(evt) => setViewport(evt.viewport)}
     >
-      {searchResults.map((result) => (
-        <div key={result.long}>
+      {searchResults.map((result, index) => (
+        <div key={index}>
           <Marker
-            longitude={result.long}
-            latitude={result.lat}
+            longitude={result.location.longitude.$numberDouble}
+            latitude={result.location.latitude.$numberDouble}
             offsetLeft={-20}
             offsetTop={-10}
           >
             <p
               onClick={() => {
                 dispatch(searchActions.setSelectLocation(result))
-                console.log(result);
+             
               }}
               role="img"
               aria-label="push-pin"
@@ -54,17 +56,17 @@ function MapArea({ searchResults }) {
             </p>
           </Marker>
           {/* This is the popup if we click the marker */}
-          {stateSelectLocation.long === result.long ? (
+          {stateSelectLocation.location.longitude.$numberDouble === result.location.longitude.$numberDouble ? (
             <Popup
             // onclose function don't work it's a bug
-            // onClose={() => {
-            // console.log('closed')
+            onClose={() => {
+            console.log('closed')
             // console.log(selectLocation)
-            // }}
+            }}
               closeOnClick={true}
               closeOnMove
-              latitude={result.lat}
-              longitude={result.long}
+              latitude={result.location.latitude.$numberDouble}
+              longitude={result.location.longitude.$numberDouble}
             >
               {result.title}
               {console.log(result.title)}

@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    selectLocation: {},
+    selectLocation: {
+        location: {longitude: '', latitude: ''}
+    },
 }
 
 const searchSlice = createSlice({

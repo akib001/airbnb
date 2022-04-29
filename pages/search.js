@@ -16,7 +16,6 @@ function Search({searchResults}) {
   const formattedEndDate = format(new Date(endDate), 'dd MMMM yy');
   const range = `${formattedStartDate} - ${formattedEndDate}`;
 
-
   return (
     <div className="">
       <Header placeholder={`${location} | ${range} | ${noOfGuests} guests`} />
@@ -39,20 +38,21 @@ function Search({searchResults}) {
             <p className="button">More filters</p>
           </div>
           <div className='flex  flex-col'>
-            {searchResults.map(({img, location, title, description, star, price, total, long, lat}) => (
-              <InfoCard
-              key={img}
-              img={img}
-              location={location}
-              title={title}
-              description={description}
-              star={star}
-              price={price}
-              total={total}
-              long={long}
-              lat={lat}
-              />
-            ))}
+            {searchResults.map((item) => {
+              return (<InfoCard
+              key={item._id}
+              location={item.address}
+              title={item.title}
+              place={item.place}
+              img={item.imageInfo[0].url}
+              description={item.description}
+              star='4.5'
+              price={item.price}
+              total={item.price}
+              longitude={item.location.longitude}
+              latitude={item.location.latitude}
+              />)
+            })}
           </div>
         </section>
         <section className='hidden xl:inline-flex xl:min-w-[600px]'>
@@ -69,8 +69,11 @@ export default Search;
 
 export async function getServerSideProps() {
   // Fetch searchResults from external API
-  const res = await fetch(`https://links.papareact.com/isz`)
-  const searchResults = await res.json()
+  const res = await fetch(`https://online-lodging-marketplace.herokuapp.com/searchResult`)
+  const data = await res.json()
+  const searchResults = data.data
+
+  // console.log(searchResults)
 
   // Pass searchResults to the page via props
   return { props: { searchResults } }
