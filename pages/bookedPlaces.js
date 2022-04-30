@@ -9,7 +9,7 @@ import { uiActions } from '../store/ui-slice';
 import InfoCard from '../components/InfoCard';
 
 
-function bookedPlaces() {
+function BookedPlaces() {
   const dispatch = useDispatch();
   const stateLoggedIn = useSelector((state) => state.ui.token);
   const [searchResults, setSearchResults] = useState([])
@@ -89,5 +89,5 @@ function bookedPlaces() {
   )
 }
 
-export default bookedPlaces;
+export default BookedPlaces;
 

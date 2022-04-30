@@ -5,9 +5,9 @@ import Header from '../components/Header';
 import { useDispatch } from 'react-redux';
 import { uiActions } from '../store/ui-slice';
 import ModalHostingDetails from '../components/ModalHostingDetails';
-import Modal from '../components/Modal'
+import LoginModal from '../components/LoginModal';
 
-function hostingDetails() {
+function HostingDetails() {
   const dispatch = useDispatch();
 
   const data = {
@@ -57,7 +57,7 @@ function hostingDetails() {
     <div className="">
         {/* Modals */}
           <ModalHostingDetails/>
-          <Modal />
+          <LoginModal />
       <Header />
       {/* Wrapper */}
       <div className="max-w-full md:max-w-3xl lg:max-w-5xl mx-auto mt-10">
@@ -157,4 +157,4 @@ function hostingDetails() {
   );
 }
 
-export default hostingDetails;
+export default HostingDetails;

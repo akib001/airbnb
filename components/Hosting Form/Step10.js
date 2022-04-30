@@ -16,7 +16,7 @@ function Step10() {
       {/* Gradient Background with Question */}
       <div className="min-h-[50vh] flex flex-col justify-end md:justify-center md:h-screen w-full md:w-[50%] overflow-hidden relative">
         <h1 className="text-[26px] md:text-5xl font-semibold text-white mb-8 mt-12 mr-6 md:mb-0 ml-6 md:ml-14 md:mr-20 shadow-sm">
-          Now, let's describe your place
+          Now, Describe your place
         </h1>
       </div>
 

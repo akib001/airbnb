@@ -9,7 +9,7 @@ import { uiActions } from '../store/ui-slice';
 import InfoCard from '../components/InfoCard';
 
 
-function hostedPlaces() {
+function HostedPlaces() {
   const dispatch = useDispatch();
   const stateLoggedIn = useSelector((state) => state.ui.token);
   const [searchResults, setSearchResults] = useState([])
@@ -96,5 +96,5 @@ function hostedPlaces() {
   )
 }
 
-export default hostedPlaces;
+export default HostedPlaces;
 
