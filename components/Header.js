@@ -44,7 +44,7 @@ function Header({placeholder, onShowMenu}) {
     if(!stateLogginIn) {
       dispatch(uiActions.setShowModal());
     } else {
-      router.push('/become-a-host/intro')
+      router.push('/become-a-host/Intro')
     }
   }
 

@@ -2,12 +2,12 @@ import React from 'react';
 import { useRouter } from 'next/router';
 
 
-function intro() {
+function Intro() {
   // eslint-disable-next-line react-hooks/rules-of-hooks
   const router = useRouter();
 
   const letsGoHandler= () => {
-    router.push('/become-a-host/form');
+    router.push('/become-a-host/Form');
   }
 
 
@@ -63,4 +63,4 @@ function intro() {
   );
 }
 
-export default intro;
+export default Intro;
