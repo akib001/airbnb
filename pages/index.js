@@ -10,6 +10,7 @@ import Modal from '../components/Modal';
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { uiActions } from '../store/ui-slice';
+import MenuModal from '../components/MenuModal';
 
 
 export default function Home({ exploreData, cardsData }) {
@@ -30,6 +31,7 @@ export default function Home({ exploreData, cardsData }) {
   return (
     <div className="">
       {/* Modals */}
+      <MenuModal/>
       <Modal />
       <Head>
         <title>Airbnb</title>
