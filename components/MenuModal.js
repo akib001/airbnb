@@ -12,7 +12,7 @@ function MenuModal() {
     (state) => state.ui.showMenuModal
   );
 
-  const stateLogginIn = useSelector((state) => state.ui.userToken);
+  const stateLoggedIn = useSelector((state) => state.ui.token);
 
   const closeModal = (e) => {
     // To identify click only occurs at backdrop
@@ -23,7 +23,7 @@ function MenuModal() {
 
    // if user is already logged in I don't show login popup
    const becomeAHostHandler = () => {
-    if(!stateLogginIn) {
+    if(!stateLoggedIn) {
       dispatch(uiActions.setShowModal());
     } else {
       router.push('/become-a-host/intro')
@@ -35,6 +35,10 @@ function MenuModal() {
     dispatch(uiActions.setShowModal());
   }
 
+  const logoutHandler = () => {
+    dispatch(uiActions.userLogout());
+    dispatch(uiActions.setShowMenuModal());
+  }
 
   return (
     stateShowMenuModal && (<section
@@ -50,9 +54,9 @@ function MenuModal() {
 
         <div className="pl-3 pt-2 pr-2">
           
-          <button onClick={showLoginModalHandler} className="pb-2 block border-b hover:border-black hover:border-b-2 text-lg md:text-lg tracking-tight text-gray-900 ">
+          {!stateLoggedIn && <button onClick={showLoginModalHandler} className="pb-2 block border-b hover:border-black hover:border-b-2 text-lg md:text-lg tracking-tight text-gray-900 ">
             Login
-          </button>
+          </button>}
           <button className="pb-2 block border-b text-lg hover:border-black hover:border-b-2 md:text-lg tracking-tight text-gray-900 ">
             Booked Places
           </button>
@@ -62,9 +66,9 @@ function MenuModal() {
           <button className="pb-2 block border-b text-lg hover:border-black hover:border-b-2 md:text-lg tracking-tight text-gray-900 ">
             Hosted Places
           </button>
-          <button className="pb-2 mb-2 block border-b text-lg hover:border-black hover:border-b-2 md:text-lg tracking-tight text-gray-900 ">
+          {stateLoggedIn && <button onClick={logoutHandler} className="pb-2 mb-2 block border-b text-lg hover:border-black hover:border-b-2 md:text-lg tracking-tight text-gray-900 ">
             Logout
-          </button>
+          </button>}
         </div>
 
       </div>

@@ -15,12 +15,39 @@ function ModalHostingDetails() {
     (state) => state.search.searchDetails
   );
 
+  const stateLoggedIn = useSelector((state) => state.ui.token);
+
   const closeModal = (e) => {
     // To identify click only occurs at backdrop
     if (modalRef.current === e.target) {
       dispatch(uiActions.setshowModalHostingDetails());
     }
   };
+
+  const confirmReserveHandler = async () => {
+    const res = await fetch(
+      'https://online-lodging-marketplace.herokuapp.com/bookPlace',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + stateLoggedIn
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify({
+          id: stateSearchDetails.id,
+          checkIn: stateSearchDetails.startDate,
+          checkOut: stateSearchDetails.endDate
+        }),
+      }
+    );
+
+    const data = await res.json()
+    console.log(data)
+    alert('Reserved Successfully');
+    dispatch(uiActions.setshowModalHostingDetails());
+
+  }
 
   return (
     // Background / Backdrop
@@ -67,11 +94,11 @@ function ModalHostingDetails() {
               </p>
           </div>
 
-          <div className="my-5 mx-6">
-            <button className="border text-lg font-semibold w-full border-black rounded-md hover:bg-gray-100">
+          {stateLoggedIn && <div className="my-5 mx-6">
+            <button onClick={confirmReserveHandler} className="border text-lg font-semibold w-full border-black rounded-md hover:bg-gray-100">
               Confirm
             </button>
-          </div>
+          </div>}
         </div>
       </section>
     )

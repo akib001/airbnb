@@ -65,7 +65,6 @@ function LoginModal() {
          if (isLoginMode) {
            dispatch(uiActions.setShowModal());
            dispatch(uiActions.userLogin({token: data.token, userEmail: email}))
-           router.push('/');
          }
        })
      })
