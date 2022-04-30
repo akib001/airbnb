@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { uiActions } from '../store/ui-slice';
 import ModalHostingDetails from './ModalHostingDetails';
 import Modal from './Modal'
+import MenuModal from './MenuModal';
 
 function PlaceDetails({selectedPlace}) {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ function PlaceDetails({selectedPlace}) {
     <div className="">
         {/* Modals */}
           <ModalHostingDetails/>
+          <MenuModal/> 
           <Modal />
       <Header />
       {/* Wrapper */}

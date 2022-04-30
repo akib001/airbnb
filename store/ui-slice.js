@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   showModal: false,
   showModalHostingDetails: false,
+  showMenuModal: false,
   userToken: '',
   userLoggedIn: false,
   userName: '',
@@ -19,6 +20,10 @@ const uiSlice = createSlice({
 
     setshowModalHostingDetails(state) {
       state.showModalHostingDetails = !state.showModalHostingDetails;
+    },
+
+    setShowMenuModal(state) {
+      state.showMenuModal = !state.showMenuModal;
     },
 
     retriveUserData(state, action) {
