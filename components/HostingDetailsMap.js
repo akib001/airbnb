@@ -8,8 +8,8 @@ function HostingDetailsMap({ location }) {
   const [viewport, setViewport] = useState({
     width: '100%',
     height: '100%',
-    latitude: location.latitude.$numberDouble,
-    longitude: location.longitude.$numberDouble,
+    latitude: location.latitude,
+    longitude: location.longitude,
     zoom: 11,
   });
 
@@ -24,8 +24,8 @@ function HostingDetailsMap({ location }) {
     >
         <div>
           <Marker
-            longitude={location.longitude.$numberDouble}
-            latitude={location.latitude.$numberDouble}
+            longitude={location.longitude}
+            latitude={location.latitude}
             offsetLeft={-20}
             offsetTop={-10}
           >

@@ -12,8 +12,8 @@ function MapArea({ searchResults }) {
 
   // $numberDouble for api fetch problem
   const coordinates = searchResults.map((result) => ({
-    longitude: result.location.longitude.$numberDouble,
-    latitude: result.location.latitude.$numberDouble,
+    longitude: result.location.longitude,
+    latitude: result.location.latitude,
   }));
 
   const center = getCenter(coordinates);
@@ -38,8 +38,8 @@ function MapArea({ searchResults }) {
       {searchResults.map((result, index) => (
         <div key={index}>
           <Marker
-            longitude={result.location.longitude.$numberDouble}
-            latitude={result.location.latitude.$numberDouble}
+            longitude={result.location.longitude}
+            latitude={result.location.latitude}
             offsetLeft={-20}
             offsetTop={-10}
           >
@@ -56,7 +56,7 @@ function MapArea({ searchResults }) {
             </p>
           </Marker>
           {/* This is the popup if we click the marker */}
-          {stateSelectLocation.location.longitude.$numberDouble === result.location.longitude.$numberDouble ? (
+          {stateSelectLocation.location.longitude === result.location.longitude ? (
             <Popup
             // onclose function don't work it's a bug
             onClose={() => {
@@ -65,8 +65,8 @@ function MapArea({ searchResults }) {
             }}
               closeOnClick={true}
               closeOnMove
-              latitude={result.location.latitude.$numberDouble}
-              longitude={result.location.longitude.$numberDouble}
+              latitude={result.location.latitude}
+              longitude={result.location.longitude}
             >
               {result.title}
               {console.log(result.title)}

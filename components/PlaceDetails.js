@@ -96,7 +96,7 @@ function PlaceDetails({selectedPlace}) {
               {`${selectedPlace.place} in ${selectedPlace.address.city}`}
             </p>
             <p className="text-[16px] md:text-[18px] pt-2">
-              {`${selectedPlace.guests.$numberInt} guests · ${selectedPlace.beds.$numberInt} beds · ${selectedPlace.bathrooms.$numberInt} bathrooms`}
+              {`${selectedPlace.guests} guests · ${selectedPlace.beds} beds · ${selectedPlace.bathrooms} bathrooms`}
             </p>
           </div>
 

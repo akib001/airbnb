@@ -70,7 +70,7 @@ function Header({placeholder, onShowMenu}) {
       <div className="relative flex items-center h-10 cursor-pointer">
         <Image
           onClick={() => router.push('/')}
-          src="https://links.papareact.com/qd3"
+          src="https://raw.githubusercontent.com/techopoly/dashboard/main/images/60.1648916355341.MpvUHqlbov1jETUKdeVW5IPLnb2a7l2I-bNKdSmodHk%3D.webp.png"
           layout="fill"
           alt="logo"
           objectFit="contain"
