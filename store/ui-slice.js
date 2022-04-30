@@ -4,6 +4,7 @@ const initialState = {
   showModal: false,
   showModalHostingDetails: false,
   showMenuModal: false,
+  showEditModal: false,
   token: '',
   userLoggedIn: false,
   userEmail: '',
@@ -23,6 +24,10 @@ const uiSlice = createSlice({
 
     setShowMenuModal(state) {
       state.showMenuModal = !state.showMenuModal;
+    },
+
+    setShowEditModal(state) {
+      state.showEditModal = !state.showEditModal;
     },
 
     retriveUserData(state, action) {

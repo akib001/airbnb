@@ -7,6 +7,7 @@ import { uiActions } from '../store/ui-slice';
 import ModalHostingDetails from './ModalHostingDetails';
 import MenuModal from './MenuModal';
 import LoginModal from './LoginModal';
+import EditModal from './EditModal';
 
 function PlaceDetails({selectedPlace}) {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ function PlaceDetails({selectedPlace}) {
   const stateUserEmail = useSelector((state) => state.ui.userEmail);
 
   const editHandler = () => {
-    
+    dispatch(uiActions.setShowEditModal());
   }
 
   let content;
@@ -56,6 +57,7 @@ function PlaceDetails({selectedPlace}) {
           <ModalHostingDetails/>
           <MenuModal/> 
           <LoginModal />
+          <EditModal/>
       <Header />
       {/* Wrapper */}
       <div className="max-w-full md:max-w-3xl lg:max-w-5xl mx-auto mt-10">
