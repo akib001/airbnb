@@ -19,6 +19,7 @@ function form() {
   const [page, setPage] = useState(1);
   const [showNextBtn, setShowNextBtn] = useState(null);
   const stateData = useSelector((state) => state.form.data);
+  const stateUserEmail = useSelector((state) => state.ui.userEmail);
 
   const router = useRouter();
 
@@ -46,7 +47,9 @@ function form() {
           guestFavoritesArray: stateData.guestFavoritesArray,
           safetyItemsArray: stateData.safetyItemsArray,
           description:stateData.description,
-          price: stateData.price
+          price: stateData.price,
+          hostedBy: stateUserEmail,
+          bookedBy: ''
         }),
       }
     );
