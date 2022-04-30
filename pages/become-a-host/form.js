@@ -127,6 +127,7 @@ function Form() {
         </button>
       </div>
       {/* Question Component */}
+      {/* checking */}
       {/* steps are question and options component */}
       {page === 1 && <Step1 />}
       {page === 2 && <Step2 />}
