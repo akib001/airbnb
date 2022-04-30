@@ -15,7 +15,7 @@ import ReviewListing from '../../components/Hosting Form/ReviewListing';
 import { useRouter } from 'next/router';
 
 
-function Form() {
+function form() {
   const [page, setPage] = useState(1);
   const [showNextBtn, setShowNextBtn] = useState(null);
   const stateData = useSelector((state) => state.form.data);
@@ -177,4 +177,4 @@ function Form() {
   );
 }
 
-export default Form;
+export default form;
