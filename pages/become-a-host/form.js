@@ -18,7 +18,7 @@ import { useRouter } from 'next/router';
 function Form() {
   const [page, setPage] = useState(1);
   const [showNextBtn, setShowNextBtn] = useState(null);
-  const stateData = useSelector((state) => state.Form.data);
+  const stateData = useSelector((state) => state.form.data);
   const stateUserEmail = useSelector((state) => state.ui.userEmail);
 
   const router = useRouter();

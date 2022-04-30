@@ -40,8 +40,6 @@ export async function getStaticProps(context) {
       const data = await res.json();
 
       const selectedPlace = data.data;
-
-      console.log(selectedPlace);
   
     return {
       props: {
