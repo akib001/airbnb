@@ -90,7 +90,6 @@ function Header({placeholder, onShowMenu}) {
       </div>
       {/* Right */}
       <div className="flex items-center space-x-4 justify-end text-gray-500">
-        <button onClick={BecomeAHostHandler} className="hidden md:inline cursor-pointer hover:bg-gray-100 px-4 py-2 rounded-full hover:shadow-md">Become a host</button>
         <GlobeAltIcon className="h-6 cursor-pointer" />
 
         <div onClick={menuModalHandler} className="flex items-center space-x-2 border-2 p-2 cursor-pointer rounded-full hover:bg-gray-100 hover:shadow-md">

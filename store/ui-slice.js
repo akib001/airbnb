@@ -4,9 +4,8 @@ const initialState = {
   showModal: false,
   showModalHostingDetails: false,
   showMenuModal: false,
-  userToken: '',
+  token: '',
   userLoggedIn: false,
-  userName: '',
   userEmail: '',
 };
 
@@ -27,26 +26,27 @@ const uiSlice = createSlice({
     },
 
     retriveUserData(state, action) {
-        state.userToken = action.payload.userToken;
-        state.userName = action.payload.userName;
+        state.token = action.payload.token;
         state.userEmail = action.payload.userEmail;
     },
 
     isUserLoggedIn(state) {
-      state.userLoggedIn = !!state.userToken;
+      state.userLoggedIn = !!state.token;
     },
 
     userLogin(state, action) {
-      state.userToken = action.payload;
-      localStorage.setItem('userToken', state.userToken);
+      state.token = action.payload.token;
+      state.userEmail = action.payload.userEmail;
+      localStorage.setItem('token', state.token);
+      localStorage.setItem('userEmail', state.userEmail);
     },
 
     userLogout(state) {
-      state.userToken = '';
-      localStorage.removeItem('userToken');
-
-      state.userName = '';
+      state.token = '';
       state.userEmail = '';
+
+      localStorage.removeItem('token');
+      localStorage.removeItem('userEmail');
     },
 
     setUserProfile(state, action) {

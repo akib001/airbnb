@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import InfoCard from '../components/InfoCard';
 import MapArea from '../components/MapArea';
 import MenuModal from '../components/MenuModal';
+import LoginModal from '../components/LoginModal';
 
 
 function Search({searchResults}) {
@@ -21,9 +22,9 @@ function Search({searchResults}) {
     <div className="">
       {/* Modals */}
       <MenuModal/>
-      
-      <Header placeholder={`${location} | ${range} | ${noOfGuests} guests`} />
+      <LoginModal/>
 
+      <Header placeholder={`${location} | ${range} | ${noOfGuests} guests`} />
 
       <main className="flex">
         <section className="flex-grow pt-14 px-6">

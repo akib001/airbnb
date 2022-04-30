@@ -5,8 +5,10 @@ import { uiActions } from '../store/ui-slice';
 import { signInWithGoogle } from '../Firebase/firebase';
 import { useRouter } from 'next/router';
 
-function Modal() {
+function LoginModal() {
   const modalRef = useRef();
+  const enteredEmailRef = useRef();
+  const enteredPasswordRef = useRef();
 
   const dispatch = useDispatch();
   const router = useRouter();
@@ -19,30 +21,77 @@ function Modal() {
     // To identify click only occurs at backdrop
     if (modalRef.current === e.target) {
       dispatch(uiActions.setShowModal());
+    } else {
+      return
     }
-    console.log(e.target);
   };
 
   const loginModeSwitchHandler = () => {
     setIsLoginMode(!isLoginMode);
   }
 
-  const signInWithGoogleHandler = () => {
-    signInWithGoogle()
-      .then((result) => {
-        dispatch(uiActions.userLogin(result._tokenResponse.idToken));
-        dispatch(
-          uiActions.setUserProfile({
-            name: result._tokenResponse.firstName,
-            email: result._tokenResponse.email,
-          })
-        );
-        router.push('/become-a-host/intro');
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  const submitHandler = (event) => {
+     event.preventDefault();
+     const email = enteredEmailRef.current.value;
+     const password = enteredPasswordRef.current.value;
+     let url;
+
+    //  Note: Error Show Bug
+
+    if (isLoginMode) {
+      url = 'https://online-lodging-marketplace.herokuapp.com/login'
+    } else {
+      url = 'https://online-lodging-marketplace.herokuapp.com/createUser'
+    }
+     
+     fetch(url, {
+       method: 'POST',
+       body: JSON.stringify({
+         email,
+         password,
+       }),
+       headers: {
+        'Content-Type': 'application/json',
+      }
+     }).then((response) => {
+       return response.json().then((data) => {
+         if (data.message) {
+          alert('Authentication Failed');
+         }
+         if (!isLoginMode) {
+            alert('User Created, Now you can login');
+            setIsLoginMode(true);
+         }
+         if (isLoginMode) {
+           dispatch(uiActions.setShowModal());
+           dispatch(uiActions.userLogin({token: data.token, userEmail: email}))
+           router.push('/');
+         }
+       })
+     })
+
+     console.log({email, password});
+
+  }  
+
+
+
+  // const signInWithGoogleHandler = () => {
+  //   signInWithGoogle()
+  //     .then((result) => {
+  //       dispatch(uiActions.userLogin(result._tokenResponse.idToken));
+  //       dispatch(
+  //         uiActions.setUserProfile({
+  //           name: result._tokenResponse.firstName,
+  //           email: result._tokenResponse.email,
+  //         })
+  //       );
+  //       router.push('/become-a-host/intro');
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
 
   return (
     // Background / Backdrop
@@ -66,7 +115,7 @@ function Modal() {
           </div>
 
           {/* Login Form */}
-          <form className="p-6 pb-4">
+          <form className="p-6 pb-4" onSubmit={submitHandler}>
             <div className="mb-6">
               <label
                 htmlFor="email"
@@ -77,6 +126,7 @@ function Modal() {
               <input
                 type="email"
                 id="email"
+                ref={enteredEmailRef}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 placeholder="name@gmail.com"
                 required
@@ -92,6 +142,7 @@ function Modal() {
               <input
                 type="password"
                 id="password"
+                ref={enteredPasswordRef}
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                 required
               />
@@ -103,7 +154,7 @@ function Modal() {
                   type="checkbox"
                   value=""
                   className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"
-                  required
+                 
                 />
               </div>
               <label
@@ -111,8 +162,8 @@ function Modal() {
                 className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-500"
               >
                 Remember me
-              </label>
-            </div>
+              </label>          
+            </div>            
             <button
               type="submit"
               className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
@@ -122,7 +173,7 @@ function Modal() {
           </form>
 
           {/* Create New Account Button */}
-          <div className="my-2 mx-6">
+          <div className="my-2 mx-6 mb-5">
             <button
               className="border w-full py-2 border-black rounded-md hover:bg-gray-100"
               type="button"
@@ -132,7 +183,7 @@ function Modal() {
             </button>
           </div>
 
-          {/* continue with google */}
+          {/* continue with google
           <div className="my-5 mx-6">
             <button
               onClick={signInWithGoogleHandler}
@@ -149,11 +200,11 @@ function Modal() {
                 <div className="mx-auto text-md">Continue With Google</div>
               </div>
             </button>
-          </div>
+          </div> */}
         </div>
       </section>
     )
   );
 }
 
-export default Modal;
+export default LoginModal;
