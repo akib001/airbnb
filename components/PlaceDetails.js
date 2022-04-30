@@ -20,6 +20,36 @@ function PlaceDetails({selectedPlace}) {
     (state) => state.search.searchDetails
   );
 
+  const stateUserEmail = useSelector((state) => state.ui.userEmail);
+
+  const editHandler = () => {
+    
+  }
+
+  let content;
+  
+  if (stateSearchDetails.title) {
+    content = <div className="text-white">
+    <button
+      onClick={showModalHostingHandler}
+      className="bg-gradient-to-r from-rose-600 via-pink-700 to-pink-600 w-full md:w-auto py-2 md:py-3 px-6 rounded-lg font-semibold"
+    >
+      Reserve
+    </button>
+  </div>
+  }
+
+  if (selectedPlace.hostedBy === stateUserEmail) {
+    content = <div className="text-white">
+    <button
+      onClick={editHandler}
+      className="bg-gradient-to-r from-rose-600 via-pink-700 to-pink-600 w-full md:w-auto py-2 md:py-3 px-6 rounded-lg font-semibold"
+    >
+      Edit
+    </button>
+  </div>
+  }
+
   return (
     <div className="">
         {/* Modals */}
@@ -54,14 +84,7 @@ function PlaceDetails({selectedPlace}) {
             {/* Price & Button */}
             <div>
               <p className='text-xl md:text-2xl font-semibold md:mb-px'>{selectedPlace.price}<span className='text-[13px] md:text-[15px] text-gray-900 font-normal'> TK/Night</span></p>
-              {stateSearchDetails.title && <div className="text-white">
-                <button
-                  onClick={showModalHostingHandler}
-                  className="bg-gradient-to-r from-rose-600 via-pink-700 to-pink-600 w-full md:w-auto py-2 md:py-3 px-6 rounded-lg font-semibold"
-                >
-                  Reserve
-                </button>
-              </div>}
+              {content}
             </div>
           </div>
 

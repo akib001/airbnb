@@ -15,6 +15,7 @@ import LoginModal from '../components/LoginModal';
 
 export default function Home({ exploreData, cardsData }) {
   const dispatch = useDispatch();
+  
   // Beacuse it's a next app we can't run localstorage on redux app it will show an error so to avoid that error 
   useEffect(() => {
     let retrivedToken = localStorage.getItem('token');

@@ -40,6 +40,16 @@ function MenuModal() {
     dispatch(uiActions.setShowMenuModal());
   }
 
+  const bookedPlacesHandler = () => {
+    dispatch(uiActions.setShowMenuModal());
+    router.push('/bookedPlaces');
+  }
+
+  const hostedPlacesHandler = () => {
+    dispatch(uiActions.setShowMenuModal());
+    router.push('/hostedPlaces');
+  }
+
   return (
     stateShowMenuModal && (<section
       onClick={closeModal}
@@ -57,13 +67,13 @@ function MenuModal() {
           {!stateLoggedIn && <button onClick={showLoginModalHandler} className="pb-2 block border-b hover:border-black hover:border-b-2 text-lg md:text-lg tracking-tight text-gray-900 ">
             Login
           </button>}
-          <button className="pb-2 block border-b text-lg hover:border-black hover:border-b-2 md:text-lg tracking-tight text-gray-900 ">
+          <button onClick={bookedPlacesHandler} className="pb-2 block border-b text-lg hover:border-black hover:border-b-2 md:text-lg tracking-tight text-gray-900 ">
             Booked Places
           </button>
           <button onClick={becomeAHostHandler} className="pb-2 block border-b text-lg hover:border-black hover:border-b-2 md:text-lg tracking-tight text-gray-900 ">
             Become a host
           </button>
-          <button className="pb-2 block border-b text-lg hover:border-black hover:border-b-2 md:text-lg tracking-tight text-gray-900 ">
+          <button onClick={hostedPlacesHandler}  className="pb-2 block border-b text-lg hover:border-black hover:border-b-2 md:text-lg tracking-tight text-gray-900 ">
             Hosted Places
           </button>
           {stateLoggedIn && <button onClick={logoutHandler} className="pb-2 mb-2 block border-b text-lg hover:border-black hover:border-b-2 md:text-lg tracking-tight text-gray-900 ">

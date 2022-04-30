@@ -34,7 +34,7 @@ export async function getStaticProps(context) {
             body: JSON.stringify({
               id: placeId
             }),
-          }
+        }
          
       );
       const data = await res.json();

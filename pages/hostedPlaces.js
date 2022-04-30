@@ -9,16 +9,24 @@ import { uiActions } from '../store/ui-slice';
 import InfoCard from '../components/InfoCard';
 
 
-function bookedPlaces() {
+function hostedPlaces() {
   const dispatch = useDispatch();
   const stateLoggedIn = useSelector((state) => state.ui.token);
   const [searchResults, setSearchResults] = useState([])
 
 
   useEffect(() => {
+    let retrivedToken = localStorage.getItem('token');
+    let retrivedEmail = localStorage.getItem('userEmail');
+
+    dispatch(uiActions.retriveUserData({
+      token: retrivedToken,
+      userEmail: retrivedEmail
+    }))
+
     const fetchBookedPlacesFn = async () => {
       const res = await fetch(
-        'https://online-lodging-marketplace.herokuapp.com/fetchBookedPlaceList',
+        'https://online-lodging-marketplace.herokuapp.com/fetchHostedPlaceList',
         {
           method: 'POST',
           headers: {
@@ -36,7 +44,6 @@ function bookedPlaces() {
    
   }, [stateLoggedIn, dispatch, setSearchResults])
 
-  console.log(searchResults);
 
   return (
     <div className="">
@@ -89,5 +96,5 @@ function bookedPlaces() {
   )
 }
 
-export default bookedPlaces;
+export default hostedPlaces;
 
