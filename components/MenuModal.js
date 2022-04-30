@@ -42,12 +42,12 @@ function MenuModal() {
 
   const bookedPlacesHandler = () => {
     dispatch(uiActions.setShowMenuModal());
-    router.push('/bookedPlaces');
+    router.push('/BookedPlaces');
   }
 
   const hostedPlacesHandler = () => {
     dispatch(uiActions.setShowMenuModal());
-    router.push('/hostedPlaces');
+    router.push('/HostedPlaces');
   }
 
   return (

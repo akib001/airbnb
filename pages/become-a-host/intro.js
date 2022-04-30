@@ -7,7 +7,7 @@ function intro() {
   const router = useRouter();
 
   const letsGoHandler= () => {
-    router.push('/become-a-host/form');
+    router.push('/become-a-host/Form');
   }
 
 
