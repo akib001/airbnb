@@ -63,7 +63,7 @@ function PhotoUpload() {
       <button className='text-white my-8 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800' onClick={uploadFile}>Confirm Upload</button>
       {stateImageInfo.map((item, index) => {
         return (<div key={item.url} className='relative'>
-          <button onClick={() => imageDeleteHandler(item.fileName, index)} className="bg-black bg-opacity-30 hover:bg-opacity-70 z-10 cursor-pointer top-4 left-6 text-white rounded-full px-3 py-1 font-semibold absolute md:hidden">
+          <button onClick={() => imageDeleteHandler(item.fileName, index)} className="bg-black bg-opacity-30 hover:bg-opacity-70 z-10 cursor-pointer top-4 left-6 text-white rounded-full px-3 py-1 font-semibold absolute">
           X
           </button>
           <img className='mb-4' src={item.url} />
