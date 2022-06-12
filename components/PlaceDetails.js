@@ -8,6 +8,7 @@ import ModalHostingDetails from './ModalHostingDetails';
 import MenuModal from './MenuModal';
 import LoginModal from './LoginModal';
 import EditModal from './EditModal';
+import Image from 'next/image'
 
 function PlaceDetails({selectedPlace}) {
   const dispatch = useDispatch();
@@ -61,11 +62,19 @@ function PlaceDetails({selectedPlace}) {
       <Header />
       {/* Wrapper */}
       <div className="max-w-full md:max-w-3xl lg:max-w-5xl mx-auto mt-10">
-        <img
+        <Image
+        className="md:rounded-xl object-cover"
+        src={selectedPlace.imageInfo[0].url}
+        alt={selectedPlace.title}
+        width={1000}
+        height={700}
+        layout='intrinsic'
+        />
+        {/* <img
           className="md:rounded-xl object-cover"
           src={selectedPlace.imageInfo[0].url}
           alt={selectedPlace.title}
-        />
+        /> */}
         <div className="p-5">
           {/* Title and Button div */}
           <div className="mb-2 pb-4 border-b flex justify-between">

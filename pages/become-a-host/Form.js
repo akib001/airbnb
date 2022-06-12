@@ -14,7 +14,6 @@ import Step11 from '../../components/Hosting Form/Step11';
 import ReviewListing from '../../components/Hosting Form/ReviewListing';
 import { useRouter } from 'next/router';
 
-
 function Form() {
   const [page, setPage] = useState(1);
   const [showNextBtn, setShowNextBtn] = useState(null);
