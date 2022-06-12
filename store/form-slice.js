@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { amenitiesData, safetyItemsData, guestFavoritesData } from '../components/Hosting Form/CheckboxItems';
+import { amenitiesData, safetyItemsData, guestFavoritesData } from '../components/HostingForm/CheckboxItems';
 
 const initialState = {
   data: {

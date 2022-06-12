@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import Step1 from '../../components/Hosting Form/Step1';
-import Step2 from '../../components/Hosting Form/Step2';
-import Step3 from '../../components/Hosting Form/Step3';
-import Step6 from '../../components/Hosting Form/Step6';
-import Address from '../../components/Hosting Form/Address';
-import ManualAddress from '../../components/Hosting Form/ManualAddress';
-import PhotoUpload from '../../components/Hosting Form/PhotoUpload';
-import Step8 from '../../components/Hosting Form/Step8';
-import Step9 from '../../components/Hosting Form/Step9';
-import Step10 from '../../components/Hosting Form/Step10';
-import Step11 from '../../components/Hosting Form/Step11';
-import ReviewListing from '../../components/Hosting Form/ReviewListing';
+import Step1 from '../../components/HostingForm/Step1';
+import Step2 from '../../components/HostingForm/Step2';
+import Step3 from '../../components/HostingForm/Step3';
+import Step6 from '../../components/HostingForm/Step6';
+import Address from '../../components/HostingForm/Address';
+import ManualAddress from '../../components/HostingForm/ManualAddress';
+import PhotoUpload from '../../components/HostingForm/PhotoUpload';
+import Step8 from '../../components/HostingForm/Step8';
+import Step9 from '../../components/HostingForm/Step9';
+import Step10 from '../../components/HostingForm/Step10';
+import Step11 from '../../components/HostingForm/Step11';
+import ReviewListing from '../../components/HostingForm/ReviewListing';
 import { useRouter } from 'next/router';
 
 function Form() {
