@@ -69,12 +69,7 @@ function PlaceDetails({selectedPlace}) {
         width={1000}
         height={700}
         layout='intrinsic'
-        />
-        {/* <img
-          className="md:rounded-xl object-cover"
-          src={selectedPlace.imageInfo[0].url}
-          alt={selectedPlace.title}
-        /> */}
+        ></Image>
         <div className="p-5">
           {/* Title and Button div */}
           <div className="mb-2 pb-4 border-b flex justify-between">
