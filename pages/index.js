@@ -81,7 +81,7 @@ export default function Home({ exploreData, cardsData }) {
 }
 
 export async function getStaticProps() {
-  const fetchedExploreData = await fetch('http://localhost:5000/exploreNearby').then(
+  const fetchedExploreData = await fetch('https://sharehome-backend.herokuapp.com/exploreNearby').then(
     (res) => res.json()
   );
 

@@ -17,7 +17,7 @@ function BookedPlaces() {
   useEffect(() => {
     const fetchBookedPlacesFn = async () => {
       const res = await fetch(
-        'http://localhost:5000/fetchBookedPlaceList',
+        'https://sharehome-backend.herokuapp.com/fetchBookedPlaceList',
         {
           method: 'POST',
           headers: {

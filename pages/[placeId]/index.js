@@ -24,7 +24,7 @@ export async function getStaticProps(context) {
     const placeId = context.params.placeId;
   
     const res = await fetch(
-        `http://localhost:5000/fetchSinglePlace`,
+        `https://sharehome-backend.herokuapp.com/fetchSinglePlace`,
         {
             method: 'POST',
             headers: {
