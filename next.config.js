@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["links.papareact.com", "a0.muscache.com", "firebasestorage.googleapis.com", "raw.githubusercontent.com"]
+    domains: ["a0.muscache.com", "firebasestorage.googleapis.com", "raw.githubusercontent.com"]
 
   },
   env: {

@@ -39,9 +39,9 @@ function LoginModal() {
     //  Note: Error Show Bug
 
     if (isLoginMode) {
-      url = 'https://sharehome-backend.herokuapp.com/login'
+      url = 'http://localhost:5000/login'
     } else {
-      url = 'https://sharehome-backend.herokuapp.com/createUser'
+      url = 'http://localhost:5000/createUser'
     }
      
      fetch(url, {

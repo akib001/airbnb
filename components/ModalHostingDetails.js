@@ -26,7 +26,7 @@ function ModalHostingDetails() {
 
   const confirmReserveHandler = async () => {
     const res = await fetch(
-      'https://sharehome-backend.herokuapp.com/bookPlace',
+      'http://localhost:5000/bookPlace',
       {
         method: 'POST',
         headers: {

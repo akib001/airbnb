@@ -26,7 +26,7 @@ function HostedPlaces() {
 
     const fetchBookedPlacesFn = async () => {
       const res = await fetch(
-        'https://sharehome-backend.herokuapp.com/fetchHostedPlaceList',
+        'http://localhost:5000/fetchHostedPlaceList',
         {
           method: 'POST',
           headers: {

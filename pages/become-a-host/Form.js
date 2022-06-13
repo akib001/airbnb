@@ -27,7 +27,7 @@ function Form() {
 
   const formSubmitHandler = async () => {
     await fetch(
-      'https://sharehome-backend.herokuapp.com/addPlace',
+      'http://localhost:5000/addPlace',
       {
         method: 'POST',
         headers: {
