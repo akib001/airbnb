@@ -39,9 +39,9 @@ function LoginModal() {
     //  Note: Error Show Bug
 
     if (isLoginMode) {
-      url = 'https://online-lodging-marketplace.herokuapp.com/login'
+      url = 'https://sharehome-backend.herokuapp.com/login'
     } else {
-      url = 'https://online-lodging-marketplace.herokuapp.com/createUser'
+      url = 'https://sharehome-backend.herokuapp.com/createUser'
     }
      
      fetch(url, {

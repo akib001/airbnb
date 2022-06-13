@@ -26,6 +26,7 @@ function MenuModal() {
     if(!stateLoggedIn) {
       dispatch(uiActions.setShowModal());
     } else {
+      dispatch(uiActions.setShowMenuModal());
       router.push('/become-a-host/Intro')
     }
   }

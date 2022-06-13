@@ -10,6 +10,10 @@ function Intro() {
     router.push('/become-a-host/Form');
   }
 
+  const exitHandler = () => {
+    router.push('/');
+  }
+
 
   return (
     <section className="flex min-h-screen relative ">
@@ -41,7 +45,7 @@ function Intro() {
       <div className="bg-black text-white h-[50vh] md:h-screen w-full md:w-[50%] rounded-t-2xl md:rounded-none absolute md:relative top-[50%] md:right-0 md:top-0 flex flex-col justify-between">
         {/* Exit Button */}
         <div className="hidden md:visible md:flex py-8 mx-12 md:justify-end">
-          <button className="rounded-3xl px-4 py-2 text-white bg-neutral-800 text-xs font-semibold hover:text-black">
+          <button onClick={exitHandler} className="rounded-3xl px-4 py-2 text-white bg-neutral-800 text-xs font-semibold hover:text-black">
             Exit
           </button>
         </div>

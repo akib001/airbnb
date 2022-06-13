@@ -7,7 +7,7 @@ function index(props) {
 
 export async function getStaticPaths() {
   const res = await fetch(
-    `https://online-lodging-marketplace.herokuapp.com/searchResult`
+    `https://sharehome-backend.herokuapp.com/`
   );
   const data = await res.json();
   const places = data.data;
@@ -24,7 +24,7 @@ export async function getStaticProps(context) {
     const placeId = context.params.placeId;
   
     const res = await fetch(
-        `https://online-lodging-marketplace.herokuapp.com/fetchSinglePlace`,
+        `https://sharehome-backend.herokuapp.com/fetchSinglePlace`,
         {
             method: 'POST',
             headers: {

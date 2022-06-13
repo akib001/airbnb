@@ -79,7 +79,7 @@ export default Search;
 
 export async function getServerSideProps() {
   // Fetch searchResults from external API
-  const res = await fetch(`https://online-lodging-marketplace.herokuapp.com/searchResult`)
+  const res = await fetch(`https://sharehome-backend.herokuapp.com/searchResult`)
   const data = await res.json()
   const searchResults = data.data
 

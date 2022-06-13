@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { formActions } from '../../store/form-slice';
 import Step1 from '../../components/HostingForm/Step1';
 import Step2 from '../../components/HostingForm/Step2';
 import Step3 from '../../components/HostingForm/Step3';
@@ -22,9 +23,11 @@ function Form() {
 
   const router = useRouter();
 
+  const dispatch = useDispatch();
+
   const formSubmitHandler = async () => {
     await fetch(
-      'https://online-lodging-marketplace.herokuapp.com/addPlace',
+      'https://sharehome-backend.herokuapp.com/addPlace',
       {
         method: 'POST',
         headers: {
@@ -57,11 +60,17 @@ function Form() {
     
   };
 
+  const exitHandler = () => {
+    router.push('/');
+    console.log('exit');
+  }
+
   const goNextPage = () => {
     // Form Submit to Api
     if (page === 12) {
       formSubmitHandler();
       router.push('/');
+      dispatch(formActions.reset());
     };
 
     if (page > 12) return;
@@ -120,7 +129,7 @@ function Form() {
   return (
     <div>
       {/* Header Button */}
-      <div className="hidden fixed right-0 md:visible md:flex py-8 mx-12 md:justify-end">
+      <div onClick={exitHandler} className="hidden fixed right-0 md:visible md:flex py-8 mx-12 md:justify-end">
         <button className="rounded-3xl px-4 py-2 text-black bg-neutral-200 text-xs font-semibold hover:bg-neutral-400">
           Exit
         </button>

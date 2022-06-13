@@ -34,7 +34,7 @@ function EditModal() {
     
      const editPlaceFn = async () => {
         const res = await fetch(
-          'https://online-lodging-marketplace.herokuapp.com/editPlace',
+          'https://sharehome-backend.herokuapp.com/editPlace',
           {
             method: 'POST',
             headers: {

@@ -92,6 +92,10 @@ const formSlice = createSlice({
 
     addSafetyItemsArray(state, action) {
       state.data.safetyItemsArray = action.payload;
+    },
+
+    reset(state) {
+      state.data = initialState.data;
     }
   },
 });
